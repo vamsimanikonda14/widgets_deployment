@@ -21,7 +21,6 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                     var dataJSON = JSON.parse(data);
                     var objectId = dataJSON.data.items[0].objectId;
                     var objectType = dataJSON.data.items[0].objectType;
-                    alert("type: " + objectType);
                     var securityContext = dataJSON.data.items[0].contextId;
                     console.log("type", objectType + objectId + securityContext);
                     // Call the web service
@@ -60,7 +59,10 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             
             // Clear previous content before adding new content
             responseContent.innerHTML = '';
-
+            var inputs = responseForm.querySelectorAll('input, textarea, select');
+            inputs.forEach(function(input) {
+                input.value = '';  // Clear the input value
+            });
             // Check if there is a valid response and the 'member' array is populated
             if (response && response.member && response.member.length > 0) {
                 var item = response.member[0]; // Since there is only 1 item in the member array

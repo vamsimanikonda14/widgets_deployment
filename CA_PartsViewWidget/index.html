@@ -1,0 +1,42 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:widget="http://www.netvibes.com/ns/">
+
+<head>
+    <script>
+        require(["DS/CA_PartsViewWidget/scripts/myWidget"], function (mywidget) {
+            widget.addEvent("onLoad", mywidget.onLoad);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html> -->
+
+
+?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:widget="http://www.netvibes.com/ns/">
+
+<head>
+    <script>
+        require(["DS/CA_PartsViewWidget/scripts/myWidget"], function (myWidget) {
+            if (myWidget && myWidget.onLoad) {
+                console.log("Widget Loaded Successfully!");
+                widget.addEvent("onLoad", myWidget.onLoad);
+            } else {
+                console.error("Error: myWidget module did not load correctly.");
+            }
+        }, function (err) {
+            console.error("RequireJS Error:", err);
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

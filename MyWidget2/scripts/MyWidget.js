@@ -4,35 +4,54 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
     var myWidget = {
         onLoad: function () {
             // Creating HTML content with form-like structure
-            widget.body.innerHTML = `<div id='mainContainer'>
-            <div id="calculator" >
-                <input type="text" id="display" readonly>
-                <div id="buttons">
-                    <button class="btn" data-value="7">7</button>
-                    <button class="btn" data-value="8">8</button>
-                    <button class="btn" data-value="9">9</button>
-                    <button class="btn op" data-value="/">÷</button><br>
-
-                    <button class="btn" data-value="4">4</button>
-                    <button class="btn" data-value="5">5</button>
-                    <button class="btn" data-value="6">6</button>
-                    <button class="btn op" data-value="*">×</button><br>
-
-                    <button class="btn" data-value="1">1</button>
-                    <button class="btn" data-value="2">2</button>
-                    <button class="btn" data-value="3">3</button>
-                    <button class="btn op" data-value="-">−</button><br>
-
-                    <button class="btn" data-value="0">0</button>
-                    <button class="btn" data-value=".">.</button>
-                    <button class="btn op" data-value="+">+</button>
-                    <button id="clear" style="background:#ff6666;">C</button><br>
-
-                    <button id="equals" style="width:100%; margin-top:10px; background:#4CAF50; color:white;">=</button>
+            widget.body.innerHTML = `<style>
+                    .calculator {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 10px;
+                        max-width: 250px;
+                        margin: 0 auto;
+                    }
+                    .calculator button, .calculator input {
+                        padding: 20px;
+                        font-size: 1.5em;
+                    }
+                    .calculator .display {
+                        grid-column: span 4;
+                        text-align: right;
+                        font-size: 1.2em;
+                    }
+                    .calculator .result {
+                        grid-column: span 4;
+                        text-align: right;
+                        font-size: 1.5em;
+                        font-weight: bold;
+                    }
+                </style>
+                <div class="calculator">
+                    <input type="text" id="display" class="display" disabled>
+                    <input type="text" id="result" class="result" disabled>
+                    <button data-value="7">7</button>
+                    <button data-value="8">8</button>
+                    <button data-value="9">9</button>
+                    <button data-value="/">/</button>
+                    <button data-value="4">4</button>
+                    <button data-value="5">5</button>
+                    <button data-value="6">6</button>
+                    <button data-value="*">*</button>
+                    <button data-value="1">1</button>
+                    <button data-value="2">2</button>
+                    <button data-value="3">3</button>
+                    <button data-value="-">-</button>
+                    <button data-value="0">0</button>
+                    <button data-value=".">.</button>
+                    <button id="equals">=</button>
+                    <button data-value="+">+</button>
+                    <button id="clear">C</button>
+                    <button id="backspace">⌫</button>
                 </div>
-            </div>
-        </div>
-    `;
+            `;
+    
 
         let expression = "";
  

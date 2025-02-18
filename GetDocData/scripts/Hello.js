@@ -1,4 +1,4 @@
-define(['DS/GetDocData/scripts/Hello'], [], function() {
+define('DS/GetDocData/scripts/Hello', [], function() {
        "use strict";
 	   var getData = {
 		   onLoad: function() {

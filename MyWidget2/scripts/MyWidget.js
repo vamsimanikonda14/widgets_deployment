@@ -3,29 +3,47 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
     
     var myWidget = {
         onLoad: function () {
-            // Creating HTML content with form-like structure
-            widget.body.innerHTML = `<style>
+            // Creating HTML content with a more compact form-like structure
+            widget.body.innerHTML = `
+                <style>
                     .calculator {
                         display: grid;
                         grid-template-columns: repeat(4, 1fr);
-                        gap: 10px;
-                        max-width: 250px;
+                        gap: 5px; /* Reduced gap between buttons */
+                        max-width: 230px; /* Smaller width */
                         margin: 0 auto;
+                        padding: 10px; /* Added padding for better appearance */
                     }
                     .calculator button, .calculator input {
-                        padding: 20px;
-                        font-size: 1.5em;
+                        padding: 15px; /* Reduced padding for buttons */
+                        font-size: 1.3em; /* Slightly smaller font */
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        background-color: #f4f4f4;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                    }
+                    .calculator button:hover {
+                        background-color: #ddd; /* Button hover effect */
                     }
                     .calculator .display {
                         grid-column: span 4;
                         text-align: right;
-                        font-size: 1.2em;
+                        font-size: 1.5em;
+                        padding: 10px;
+                        background-color: #f9f9f9;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
                     }
                     .calculator .result {
                         grid-column: span 4;
                         text-align: right;
                         font-size: 1.5em;
                         font-weight: bold;
+                        padding: 10px;
+                        background-color: #f9f9f9;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
                     }
                 </style>
                 <div class="calculator">
@@ -51,47 +69,30 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
                     <button id="backspace">⌫</button>
                 </div>
             `;
-    
 
-        let expression = "";
- 
-        function updateDisplay() {
-            document.getElementById("display").value = expression;
-        }
+            let expression = "";
 
-        // Button Click Event Listener
-        document.querySelectorAll(".btn").forEach(button => {
-            button.addEventListener("click", function () {
-                expression += this.getAttribute("data-value");
-                updateDisplay();
-            });
-        });
-
-        // Operator Buttons
-        document.querySelectorAll(".op").forEach(button => {
-            button.addEventListener("click", function () {
-                if (expression !== "" && !/[+\-*/]$/.test(expression)) {
-                    expression += this.getAttribute("data-value");
-                    updateDisplay();
-                }
-            });
-        });
-
-        // Clear Button
-        document.getElementById("clear").addEventListener("click", function () {
-            expression = "";
-            updateDisplay();
-        });
-
-        // Equals Button
-        document.getElementById("equals").addEventListener("click", function () {
-            try {
-                expression = eval(expression).toString(); // Evaluate expression
-            } catch {
-                expression = "Error";
+            function updateDisplay() {
+                document.getElementById("display").value = expression;
             }
-            updateDisplay();
-        });
+
+            // Button Click Event Listener
+            document.querySelectorAll("button").forEach(button => {
+                button.addEventListener("click", function () {
+                    if (this.id === "clear") {
+                        expression = "";
+                    } else if (this.id === "equals") {
+                        try {
+                            expression = eval(expression).toString(); // Evaluate expression
+                        } catch {
+                            expression = "Error";
+                        }
+                    } else {
+                        expression += this.getAttribute("data-value") || this.textContent;
+                    }
+                    updateDisplay();
+                });
+            });
         }
     };
 

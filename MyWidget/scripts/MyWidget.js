@@ -1,9 +1,10 @@
-define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop','DS/PlatformAPI/PlatformAPI','DS/WAFData/WAFData'], function (DataDragAndDrop,PlatformAPI,WAFData) {
+define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop'], function (DataDragAndDrop) {
     'use strict';
     
     var myWidget = {
         onLoad: function () {
-            widget.body.innerHTML = "<div class='main-Container' id='mainContainer'></div>";
+            // Creating HTML content with form-like structure
+            widget.body.innerHTML = "<div class='main-Container' id='mainContainer' style='width: 100%; height: 100%;text-align: center; background-color:#005685;color:#ffffff;'><h1>Drop</h1></div>";
 
             var theInput = document.querySelector('#mainContainer');
             DataDragAndDrop.droppable(theInput, {
@@ -13,14 +14,11 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop','DS
                     var dataJSON = JSON.parse(data);
                     var objectId = dataJSON.data.items[0].objectId;
                     var objectType = dataJSON.data.items[0].objectType;
-                    var securityContext = dataJSON.data.items[0].contextId;
-                    alert("type"+objectType+objectId+securityContext);
-                    //that.callWebService(objectId,securityContext);
+                    alert("type"+objectType);
                         
                 },
             });
         }
-        
     };
 
     widget.addEvent('onLoad', myWidget.onLoad);

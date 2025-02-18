@@ -109,5 +109,10 @@ define("DS/PartsWidget/scripts/PartsWidget", [], function () {
         }
     };
 
+    // Ensuring the button click binds properly to the displayTable method
+    document.getElementById("yourButtonId").addEventListener('click', function() {
+        PartsWidget.displayTable();  // Call displayTable when button is clicked
+    });
+
     return PartsWidget;
 });

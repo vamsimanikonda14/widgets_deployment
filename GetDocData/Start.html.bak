@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:widget="http://www.netvibes.com/ns/">
     <head>
     <script> 
-	 require(["DS/GetDocData/scripts/Hello"], function (getData) {
-	  widget.addEvent("onLoad",getData.onLoadWidget);
+	 require(["DS/GetDocData/scripts/Hello"], function (Hello) {
+	  widget.addEvent("onLoad",Hello.onLoadWidget);
 	     
 	 });
 	</script>

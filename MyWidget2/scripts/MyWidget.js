@@ -5,68 +5,38 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
         onLoad: function () {
             // Creating HTML content with a more compact form-like structure
             widget.body.innerHTML = `
-                <style>
-                    .calculator {
-                        display: grid;
-                        grid-template-columns: repeat(4, 1fr);
-                        gap: 5px; /* Reduced gap between buttons */
-                        max-width: 230px; /* Smaller width */
-                        margin: 0 auto;
-                        padding: 10px; /* Added padding for better appearance */
-                    }
-                    .calculator button, .calculator input {
-                        padding: 15px; /* Reduced padding for buttons */
-                        font-size: 1.3em; /* Slightly smaller font */
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        background-color: #f4f4f4;
-                        cursor: pointer;
-                        transition: background-color 0.3s;
-                    }
-                    .calculator button:hover {
-                        background-color: #ddd; /* Button hover effect */
-                    }
-                    .calculator .display {
-                        grid-column: span 4;
-                        text-align: right;
-                        font-size: 1.5em;
-                        padding: 10px;
-                        background-color: #f9f9f9;
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                    }
-                    .calculator .result {
-                        grid-column: span 4;
-                        text-align: right;
-                        font-size: 1.5em;
-                        font-weight: bold;
-                        padding: 10px;
-                        background-color: #f9f9f9;
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                    }
-                </style>
-                <div class="calculator">
-                    <input type="text" id="display" class="display" disabled>
-                    <input type="text" id="result" class="result" disabled>
-                    <button data-value="7">7</button>
-                    <button data-value="8">8</button>
-                    <button data-value="9">9</button>
-                    <button data-value="/">/</button>
-                    <button data-value="4">4</button>
-                    <button data-value="5">5</button>
-                    <button data-value="6">6</button>
-                    <button data-value="*">*</button>
-                    <button data-value="1">1</button>
-                    <button data-value="2">2</button>
-                    <button data-value="3">3</button>
-                    <button data-value="-">-</button>
-                    <button data-value="0">0</button>
-                    <button data-value=".">.</button>
-                    <button id="equals">=</button>
-                    <button data-value="+">+</button>
-                    <button id="clear">C</button>
-                    <button id="backspace">⌫</button>
+                <div style="text-align: center;">
+                    <input type="text" id="display" disabled style="width: 230px; font-size: 1.5em; padding: 10px; text-align: right; margin-bottom: 10px;">
+                    <br>
+                    <input type="text" id="result" disabled style="width: 230px; font-size: 1.5em; padding: 10px; text-align: right; margin-bottom: 10px;">
+                    <div>
+                        <button data-value="7" style="padding: 10px; font-size: 1.3em;">7</button>
+                        <button data-value="8" style="padding: 10px; font-size: 1.3em;">8</button>
+                        <button data-value="9" style="padding: 10px; font-size: 1.3em;">9</button>
+                        <button data-value="/" style="padding: 10px; font-size: 1.3em;">/</button>
+                    </div>
+                    <div>
+                        <button data-value="4" style="padding: 10px; font-size: 1.3em;">4</button>
+                        <button data-value="5" style="padding: 10px; font-size: 1.3em;">5</button>
+                        <button data-value="6" style="padding: 10px; font-size: 1.3em;">6</button>
+                        <button data-value="*" style="padding: 10px; font-size: 1.3em;">*</button>
+                    </div>
+                    <div>
+                        <button data-value="1" style="padding: 10px; font-size: 1.3em;">1</button>
+                        <button data-value="2" style="padding: 10px; font-size: 1.3em;">2</button>
+                        <button data-value="3" style="padding: 10px; font-size: 1.3em;">3</button>
+                        <button data-value="-" style="padding: 10px; font-size: 1.3em;">-</button>
+                    </div>
+                    <div>
+                        <button data-value="0" style="padding: 10px; font-size: 1.3em;">0</button>
+                        <button data-value="." style="padding: 10px; font-size: 1.3em;">.</button>
+                        <button id="equals" style="padding: 10px; font-size: 1.3em;">=</button>
+                        <button data-value="+" style="padding: 10px; font-size: 1.3em;">+</button>
+                    </div>
+                    <div>
+                        <button id="clear" style="padding: 10px; font-size: 1.3em;">C</button>
+                        <button id="backspace" style="padding: 10px; font-size: 1.3em;">⌫</button>
+                    </div>
                 </div>
             `;
 

@@ -8,7 +8,7 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
             <div id='mainContainer' style="height:100vh; width:100vw; display:flex; justify-content:center; align-items:center; font-family:Arial;">
                 <div id="calculator" style="width:100%; max-width:500px; height:100%; padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
                     <input type="text" id="display" readonly style="width:100%; height:70px; font-size:30px; text-align:right; margin-bottom:20px; padding:10px; border:none; background:#fff; box-shadow:0 0 5px rgba(0, 0, 0, 0.1);">
-                    <div id="buttons" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px;">
+                    <div id="buttons">
                     <div id="buttons">
                         <button class="btn" data-value="7">7</button>
                         <button class="btn" data-value="8">8</button>

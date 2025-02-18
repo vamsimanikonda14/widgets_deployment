@@ -17,7 +17,7 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop','DS
                     alert("type"+objectType);
                     var securityContext = dataJSON.data.items[0].contextId;
                     console.log("type",objectType+objectId+securityContext);  
-                    that.callWebService(objectId,securityContext); 
+                    myWidget.callWebService(objectId,securityContext); 
                 },
             });
         },

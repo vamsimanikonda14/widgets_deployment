@@ -15,33 +15,12 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop','DS
                     var objectType = dataJSON.data.items[0].objectType;
                     var securityContext = dataJSON.data.items[0].contextId;
                     alert("type"+objectType+objectId+securityContext);
-                    that.callWebService(objectId,securityContext);
+                    //that.callWebService(objectId,securityContext);
                         
                 },
             });
-        },
-        callWebService: function (objectId,securityContext) {
-            let that = this;
-            let spaceUrl =  PlatformAPI.getApplicationConfiguration("app.urls.myapps");
-            var resource = '/resources/v1/modeler/dseng/dseng:EngItem/'+objectId;
-            WAFData.authenticatedRequest(spaceUrl + resource, {
-                method: "GET",
-                headers: {
-                    "SecurityContext": securityContext,
-                    'Content-Type': 'application/json',
-                },
-                type: 'json',
-                onComplete: function (rs) {
-                    console.log("TICKET PUT", rs);
-                    promise.resolve();
-                },
-                onFailure: function (error) {
-                    console.log("TICKET PUT ERR", error);
-                    promise.reject();
-                }
-
-            });
         }
+        
     };
 
     widget.addEvent('onLoad', myWidget.onLoad);

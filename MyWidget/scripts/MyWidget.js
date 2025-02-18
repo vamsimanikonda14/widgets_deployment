@@ -4,9 +4,13 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
     var myWidget = {
         onLoad: function () {
             // Creating HTML content with form-like structure
-            widget.body.innerHTML = "<div class='main-Container' id='mainContainer' style='width: 100%; height: 100%;text-align: center; background-color:#005685;color:#ffffff;'>" +
-                                        "<h1>Drop</h1>" +
-                                        "<div id='responseForm' style='display:none; margin-top: 20px; background-color:#ffffff; color:#333; padding: 20px; border-radius: 10px;'></div>" +
+            widget.body.innerHTML = "<div class='main-Container' id='mainContainer' style='width: 100%; height: 100%;text-align: center; background-color:#005685; color: #ffffff; padding: 40px;'>" +
+                                        "<h1>Drag and Drop Data</h1>" +
+                                        "<div id='responseForm' style='display:none; margin-top: 20px; background-color:#ffffff; color:#333; padding: 40px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); width: 80%; max-width: 800px; margin: 0 auto;'>" +
+                                            "<h2 style='color: #005685;'>Response Data</h2>" +
+                                            "<div id='responseContent'></div>" +
+                                            "<button id='returnBtn' style='margin-top: 20px; padding: 10px 20px; background-color: #005685; color: #fff; border: none; border-radius: 5px; cursor: pointer;'>Return to Drop Area</button>" +
+                                        "</div>" +
                                      "</div>";
 
             var theInput = document.querySelector('#mainContainer');
@@ -23,6 +27,12 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                     // Call the web service
                     myWidget.callWebService(objectId, securityContext);
                 },
+            });
+
+            // Add return button functionality
+            document.querySelector('#returnBtn').addEventListener('click', function () {
+                document.querySelector('#mainContainer').style.display = 'block';
+                document.querySelector('#responseForm').style.display = 'none';
             });
         },
 
@@ -51,44 +61,44 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
         },
 
         displayResponseForm: function (response) {
-            // Hide the "drop" area and show the response form
-            document.querySelector('#mainContainer').style.display = 'none';
             var responseForm = document.querySelector('#responseForm');
-            responseForm.style.display = 'block';
-
-            // Create and populate the form elements dynamically based on the response
-            var formHTML = "<h2>Response Data</h2>";
+            var responseContent = document.querySelector('#responseContent');
+            
+            // Clear previous content before adding new content
+            responseContent.innerHTML = '';
 
             // Check if there is a valid response and the 'member' array is populated
             if (response && response.member && response.member.length > 0) {
                 var item = response.member[0]; // Since there is only 1 item in the member array
 
-                formHTML += "<p><strong>Name:</strong> " + item.name + "</p>";
-                formHTML += "<p><strong>Title:</strong> " + item.title + "</p>";
-                formHTML += "<p><strong>Description:</strong> " + (item.description || 'No description available') + "</p>";
-                formHTML += "<p><strong>ID:</strong> " + item.id + "</p>";
-                formHTML += "<p><strong>Type:</strong> " + item.type + "</p>";
-                formHTML += "<p><strong>Modified:</strong> " + item.modified + "</p>";
-                formHTML += "<p><strong>Created:</strong> " + item.created + "</p>";
-                formHTML += "<p><strong>Revision:</strong> " + item.revision + "</p>";
-                formHTML += "<p><strong>State:</strong> " + item.state + "</p>";
-                formHTML += "<p><strong>Owner:</strong> " + item.owner + "</p>";
-                formHTML += "<p><strong>Organization:</strong> " + item.organization + "</p>";
-                formHTML += "<p><strong>Collaboration Space:</strong> " + item.collabspace + "</p>";
-                formHTML += "<p><strong>Cestamp:</strong> " + item.cestamp + "</p>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Name:</strong> <span>" + item.name + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Title:</strong> <span>" + item.title + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Description:</strong> <span>" + (item.description || 'No description available') + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>ID:</strong> <span>" + item.id + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Type:</strong> <span>" + item.type + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Modified:</strong> <span>" + item.modified + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Created:</strong> <span>" + item.created + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Revision:</strong> <span>" + item.revision + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>State:</strong> <span>" + item.state + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Owner:</strong> <span>" + item.owner + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Organization:</strong> <span>" + item.organization + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Collaboration Space:</strong> <span>" + item.collabspace + "</span></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Cestamp:</strong> <span>" + item.cestamp + "</span></div>";
             } else {
-                formHTML += "<p>No data available</p>";
+                responseContent.innerHTML += "<div>No data available</div>";
             }
 
-            // Add labels for each field (optional)
+            // Optionally, add labels if available
             if (response && response.nlsLabel) {
-                formHTML += "<hr><h3>Field Labels:</h3>";
+                responseContent.innerHTML += "<hr><h3>Field Labels:</h3>";
                 for (var key in response.nlsLabel) {
-                    formHTML += "<p><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</p>";
+                    responseContent.innerHTML += "<div><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</div>";
                 }
             }
 
-            responseForm.innerHTML = formHTML;
+            // Hide the drop area and show the response form
+            document.querySelector('#mainContainer').style.display = 'none';
+            responseForm.style.display = 'block';
         }
     };
 

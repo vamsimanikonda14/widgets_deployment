@@ -1,4 +1,4 @@
-define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop'], function (DataDragAndDrop) {
+define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop','DS/PlatformAPI/PlatformAPI','DS/WAFData/WAFData'], function (DataDragAndDrop,PlatformAPI,WAFData) {
     'use strict';
     
     var myWidget = {
@@ -15,7 +15,8 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop'], f
                     var objectId = dataJSON.data.items[0].objectId;
                     var objectType = dataJSON.data.items[0].objectType;
                     alert("type"+objectType);
-                        
+                    var securityContext = dataJSON.data.items[0].contextId;
+                    console.log("type",objectType+objectId+securityContext);   
                 },
             });
         }

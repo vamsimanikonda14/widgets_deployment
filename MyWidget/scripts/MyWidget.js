@@ -126,7 +126,7 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             
                 // Table body with item data
                 tableHTML += "<tbody><tr>";
-                
+                tableHTML +="<td>"+ + "</td>";
                 tableHTML += "<td>" + item.name + "</td>";
                 tableHTML += "<td>" + item.title + "</td>";
                 tableHTML += "<td>" + (item.description || 'No description available') + "</td>";

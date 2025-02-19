@@ -66,7 +66,7 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             responseContent.innerHTML = '';
             var inputs = responseForm.querySelectorAll('input, textarea, select');
             inputs.forEach(function(input) {
-                input.value = '';  
+                input.value = '';  // Clear the input value
             });
             // Check if there is a valid response and the 'member' array is populated
             if (response && response.member && response.member.length > 0) {
@@ -155,12 +155,9 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             // Optionally, add labels if available
             if (response && response.nlsLabel) {
                 responseContent.innerHTML += "<hr><h3>Field Labels:</h3>";
-                responseContent.innerHTML += "<table border='1' style='width: 100%; margin-top: 10px;'><thead><tr><th>Label</th><th>Field</th></tr></thead><tbody>";
                 for (var key in response.nlsLabel) {
-                    responseContent.innerHTML += "<tr><td><strong>" + response.nlsLabel[key] + "</strong></td><td>" + key + "</td></tr>";
+                    responseContent.innerHTML += "<div><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</div>";
                 }
-                 // Close the table
-                responseContent.innerHTML += "</tbody></table>";
             }
         },
 

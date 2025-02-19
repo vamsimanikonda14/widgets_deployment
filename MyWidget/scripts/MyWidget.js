@@ -113,6 +113,14 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                     .response-table td {
                         word-wrap: break-word;
                     }
+                    
+                    .material-symbols-outlined {
+                    font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24
+                    }
                 </style>
                 `;
             

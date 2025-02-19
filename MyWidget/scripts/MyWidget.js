@@ -149,77 +149,12 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
 
             // Optionally, add labels if available
             if (response && response.nlsLabel) {
-                // Define the CSS styles (reusing the previous table style)
-                var style = `
-                <style>
-                    .table-container {
-                        width: 100%;
-                        max-height: 400px; /* Set maximum height for vertical scrolling */
-                        overflow: auto;
-                        border: 1px solid #ddd;
-                        margin-top: 20px;
-                    }
-            
-                    .response-table {
-                        width: 100%;
-                        min-width: 800px; /* Set a fixed minimum width for the table */
-                        border-collapse: collapse;
-                        font-family: Arial, sans-serif;
-                    }
-            
-                    .response-table th,
-                    .response-table td {
-                        padding: 12px;
-                        text-align: left;
-                        border: 1px solid #ddd;
-                    }
-            
-                    .response-table th {
-                        background-color: #f2f2f2;
-                        font-weight: bold;
-                    }
-            
-                    .response-table tr:nth-child(even) {
-                        background-color: #f9f9f9;
-                    }
-            
-                    .response-table tr:hover {
-                        background-color: #e9e9e9;
-                    }
-            
-                    .response-table td {
-                        word-wrap: break-word;
-                    }
-                </style>
-                `;
-            
-                // Create a table for displaying the nlsLabel data
-                var tableHTML = "<table class='response-table'>";
-            
-                // Table headers
-                tableHTML += "<thead><tr>";
-                tableHTML += "<th>Label</th><th>Key</th>";
-                tableHTML += "</tr></thead>";
-            
-                // Table body with nlsLabel data
-                tableHTML += "<tbody>";
+                responseContent.innerHTML += "<hr><h3>Field Labels:</h3>";
                 for (var key in response.nlsLabel) {
-                    tableHTML += "<tr>";
-                    tableHTML += "<td>" + response.nlsLabel[key] + "</td>";
-                    tableHTML += "<td>" + key + "</td>";
-                    tableHTML += "</tr>";
+                    responseContent.innerHTML += "<div><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</div>";
                 }
-                tableHTML += "</tbody>";
-            
-                // Close the table
-                tableHTML += "</table>";
-            
-                // Insert the style and the table inside a container for scrolling
-                responseContent.innerHTML = style + "<div class='table-container'>" + tableHTML + "</div>";
-            } else {
-                responseContent.innerHTML = "<div>No field labels available</div>";
             }
-            
+
             
         }
     };

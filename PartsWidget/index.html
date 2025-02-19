@@ -4,9 +4,9 @@
     <head>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            
-            require(["DS/PartsWidget/Scripts/PartsWidget"],function(parts){
-                PartsWidget.addEvent("onLoad",parts.onload);
+            // Assuming the widget has a method to initialize itself
+            $(document).ready(function () {
+                PartsWidget.onLoad();
             });
         </script>
     </head>

@@ -3,13 +3,13 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
 
     var myWidget = {
         onLoad: function () {
-            // Creating HTML content with a form-like structure
-            widget.body.innerHTML = "<div class='main-Container' id='mainContainer'>" +
+            // Creating HTML content with form-like structure
+            widget.body.innerHTML = "<div class='main-Container' id='mainContainer' style='width: 100%; height: 100%; text-align: center; background-color:#005685; color: #ffffff; padding: 40px;'>" +
                                         "<h1>Drag and Drop Data</h1>" +
-                                        "<div id='responseForm'>" +
+                                        "<div id='responseForm' style=' margin-top: 20px; background-color:#ffffff; color:#333; padding: 70px; border-radius: 24px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); width: 80%; max-width: 1070px; margin: 0 auto; display: none;'>" +
                                             "<h2 style='color: #005685;'>Response Data</h2>" +
                                             "<div id='responseContent'></div>" +
-                                            "<button id='returnBtn'>Return to Drop Area</button>" +
+                                            "<button id='returnBtn' style='margin-top: 20px; padding: 10px 20px; background-color: #005685; color: #fff; border: none; border-radius: 5px; cursor: pointer;'>Return to Drop Area</button>" +
                                         "</div>" +
                                      "</div>";
 
@@ -76,115 +76,49 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                 var style = `
                 <style>
                     .table-container {
-                        width: 100%;
-                        max-height: 400px;
+                        width: 103%;
+                        max-height: 400px; /* Set maximum height for vertical scrolling */
                         overflow: auto;
                         border: 1px solid #ddd;
                         margin-top: 20px;
                     }
-
+            
                     .response-table {
                         width: 100%;
-                        min-width: 800px;
+                        min-width: 800px; /* Set a fixed minimum width for the table */
                         border-collapse: collapse;
                         font-family: Arial, sans-serif;
                     }
-
+            
                     .response-table th,
                     .response-table td {
                         padding: 12px;
                         text-align: left;
                         border: 1px solid #ddd;
                     }
-
+            
                     .response-table th {
                         background-color: #f2f2f2;
                         font-weight: bold;
                     }
-
+            
                     .response-table tr:nth-child(even) {
-                        background-color: rgba(249, 249, 249, 0.66);
+                        background-color:rgba(249, 249, 249, 0.66);
                     }
-
+            
                     .response-table tr:hover {
                         background-color: #e9e9e9;
                     }
-
+            
                     .response-table td {
                         word-wrap: break-word;
-                    }
-
-                    /* Flexbox layout for responsiveness */
-                    .main-Container {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100vh;
-                        background-color: #005685;
-                        color: #ffffff;
-                        padding: 20px;
-                        text-align: center;
-                    }
-
-                    #responseForm {
-                        margin-top: 20px;
-                        background-color: #ffffff;
-                        color: #333;
-                        padding: 40px;
-                        border-radius: 24px;
-                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-                        width: 100%;
-                        max-width: 1070px;
-                        display: none;
-                        box-sizing: border-box;
-                    }
-
-                    #returnBtn {
-                        margin-top: 20px;
-                        padding: 10px 20px;
-                        background-color: #005685;
-                        color: #fff;
-                        border: none;
-                        border-radius: 5px;
-                        cursor: pointer;
-                    }
-
-                    /* Media Queries for responsiveness */
-                    @media (max-width: 768px) {
-                        .main-Container {
-                            padding: 15px;
-                        }
-
-                        #responseForm {
-                            width: 100%;
-                            padding: 20px;
-                        }
-
-                        .response-table {
-                            font-size: 14px;
-                        }
-                    }
-
-                    @media (max-width: 480px) {
-                        .main-Container {
-                            padding: 10px;
-                        }
-
-                        #responseForm {
-                            padding: 15px;
-                        }
-
-                        .response-table {
-                            font-size: 12px;
-                        }
                     }
                 </style>
                 `;
             
                 // Create a table for displaying the data
                 var tableHTML = "<table class='response-table'>";
-
+            
                 // Table headers
                 tableHTML += "<thead><tr>";
                 tableHTML += "<th>Name</th><th>Title</th><th>Description</th><th>ID</th><th>Type</th><th>Modified</th><th>Created</th><th>Revision</th><th>State</th><th>Owner</th><th>Organization</th><th>Collaboration</th><th>Cestamp</th>";

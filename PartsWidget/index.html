@@ -1,52 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:widget="http://www.netvibes.com/ns/">
-
-<head>
-    <script>
-        require(["DS/PartsWidget/scripts/PartsWidget"], function (PartsWidget) {
-            // Attach the onLoad event to PartWidget's onLoadWidget method
-            widget.addEvent("onLoad", function() {
-                PartsWidget.onLoadWidget();  // Calling the widget load function
-                createPartsButton();  // Creating the button once the widget is loaded
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            
+            require(["DS/PartsWidget/Scripts/PartsWidget"],function(parts){
+                PartsWidget.addEvent("onLoad",parts.onload);
             });
-
-            // Function to create the button for triggering the displayTable function
-            function createPartsButton() {
-                var button = document.createElement("button");
-                button.innerHTML = "Show Parts Table";
-                button.onclick = PartsWidget.displayTable;  // Bind the button click to displayTable
-
-                // Apply CSS to position the button at the top of the screen
-                button.style.position = "fixed";
-                button.style.top = "0%";
-                button.style.left = "30%";
-                button.style.transform = "translateX(-50%)";  // Center button horizontally
-                button.style.padding = "10px 20px";
-                button.style.fontSize = "14px";
-                button.style.backgroundColor = "#4CAF50";  // Green background color
-                button.style.color = "white";  // White text color
-                button.style.border = "none";  // Remove default border
-                button.style.borderRadius = "3px";  // Rounded corners
-                button.style.zIndex = "1000";  // Ensure it's above other elements
-
-                // Add hover effect
-                button.style.cursor = "pointer";
-                button.onmouseover = function() {
-                    button.style.backgroundColor = "#45a049";  // Darker green on hover
-                };
-                button.onmouseout = function() {
-                    button.style.backgroundColor = "#4CAF50";  // Revert to original green
-                };
-
-                document.body.appendChild(button);
-            }
-        });
-    </script>
-</head>
-
-<body>
-    <div id="tableContainer"></div> <!-- Container for dynamically added table -->
-</body>
-
+        </script>
+    </head>
+    <body></body>
 </html>

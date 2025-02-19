@@ -1,4 +1,4 @@
-define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAPI/PlatformAPI"], function (WAFData, PlatformAPI) {
+define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAPI/PlatformAPI","DS/i3DXCompassServices/i3DXCompassServices"], function (WAFData, PlatformAPI, i3DXCompassServices) {
     'use strict';
     var myWidget = {
         onLoad: function () {
@@ -36,7 +36,11 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                    let dataSetSpaceUrl =  spaceURL+"/resources/v1/modeler/dseng/dseng:EngItem/search"; 
                    var url = dataSetSpaceUrl+ "?$searchStr=VPMReference&$mask=dsmveng:EngItemMask.Details" ;
                     var request = url;
-    
+                    i3DXCompassServices.getPlatformServices({
+                        onComplete: function(rs) {
+                            console.info('getPlatformServices', rs);
+                        }
+                    });
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",

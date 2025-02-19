@@ -2,6 +2,9 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
     'use strict';
 
     var myWidget = {
+        currentPage: 1,
+        rowsPerPage: 10, // Number of rows to show per page
+
         onLoad: function () {
             // Add button and table container to the body
             document.body.innerHTML =  
@@ -39,13 +42,18 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
         },
 
         renderTable: function (data) {
+            // Paginate the data
+            var startIndex = (this.currentPage - 1) * this.rowsPerPage;
+            var endIndex = startIndex + this.rowsPerPage;
+            var pageData = data.slice(startIndex, endIndex);
+
             var tableHtml = "<table>" +
                             "<thead>" +
                             "<tr><th>Type</th><th>Name</th><th>Revision</th><th>Maturity</th></tr>" + // Table headers
                             "</thead><tbody>";
 
-            // Loop through the API data to generate table rows
-            data.forEach(function (part) {
+            // Loop through the paginated data to generate table rows
+            pageData.forEach(function (part) {
                 tableHtml += "<tr>" +
                              "<td>" + (part.type || 'N/A') + "</td>" + // Handle missing values
                              "<td>" + (part.name || 'N/A') + "</td>" + // Handle missing values
@@ -56,8 +64,38 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
 
             tableHtml += "</tbody></table>";
 
-            // Inject the table HTML into the table container
-            $('#tableContainer').html(tableHtml);
+            // Create Pagination controls
+            var totalPages = Math.ceil(data.length / this.rowsPerPage);
+            var paginationHtml = "<div class='pagination'>";
+
+            if (this.currentPage > 1) {
+                paginationHtml += "<button id='prevPage'>Previous</button>";
+            }
+
+            if (this.currentPage < totalPages) {
+                paginationHtml += "<button id='nextPage'>Next</button>";
+            }
+
+            paginationHtml += "</div>";
+
+            // Inject the table and pagination HTML into the table container
+            $('#tableContainer').html(tableHtml + paginationHtml);
+
+            // Bind pagination events
+            $('#prevPage').on('click', function () {
+                if (myWidget.currentPage > 1) {
+                    myWidget.currentPage--;
+                    myWidget.renderTable(data); // Re-render table with new page
+                }
+            });
+
+            $('#nextPage').on('click', function () {
+                var totalPages = Math.ceil(data.length / myWidget.rowsPerPage);
+                if (myWidget.currentPage < totalPages) {
+                    myWidget.currentPage++;
+                    myWidget.renderTable(data); // Re-render table with new page
+                }
+            });
         }
     };
 

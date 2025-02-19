@@ -1,4 +1,4 @@
-define("DS/PartsWidget/scripts/PartsWidget", [], function () {
+define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (WAFData) {
     'use strict';
 
     var PartsWidget = {

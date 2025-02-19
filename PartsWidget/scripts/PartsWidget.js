@@ -1,4 +1,4 @@
-define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData"], function (WAFData) {
+define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (WAFData) {
     'use strict';
     var myWidget = {
         onLoad: function () {
@@ -13,22 +13,6 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData"], function (WA
             });
         },
 
-      /*  fetchData: function () {
-            // Example API endpoint
-            var apiUrl = 'https://api.example.com/parts'; // Replace with your actual API endpoint
-
-            // Fetch data from the API
-            $.ajax({
-                url: apiUrl,
-                method: 'GET',
-                success: function (data) {
-                    myWidget.renderTable(data); // Call the function to render the table with data
-                },
-                error: function (err) {
-                    console.error('Error fetching data:', err);
-                }
-            });
-        },*/
         fetchData: function() {
              
                     let dataSetSpaceUrl =  "https://vdemopro1161dsy.extranet.3ds.com/3DSpace"+"/resources/v1/modeler/dseng/dseng:EngItem/search";

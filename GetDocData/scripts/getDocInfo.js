@@ -5,7 +5,7 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
 			   //widget.body.innerHTML = "<p> Hello santhosh welcome to the widget</p>" ;
                  // Create the heading for the document part information
            var heading = document.createElement("h2");
-           heading.textContent = "Document Part Information";
+           heading.textContent = "Document Part's Information";
            
            // Creating the table structure
            var table = document.createElement("table");
@@ -25,9 +25,9 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
 
            // Adding dynamic rows (Example data, you can replace this with actual data)
            var data = [
-               { sno: 1, type: "Type1", name: "Document1", revision: "Rev1", state: "Active" },
-               { sno: 2, type: "Type2", name: "Document2", revision: "Rev2", state: "Inactive" },
-               { sno: 3, type: "Type3", name: "Document3", revision: "Rev3", state: "Active" }
+               { sno: 1, type: "Doc1", name: "DOC-123", revision: "A.1", state: "In Work" },
+               { sno: 2, type: "Doc2", name: "DOC-124", revision: "B.4", state: "Frozen" },
+               { sno: 3, type: "Doc3", name: "DOC-125", revision: "C.1", state: "Released" }
            ];
 
            // Dynamically adding rows to the table

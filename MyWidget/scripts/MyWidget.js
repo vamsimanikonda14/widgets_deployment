@@ -66,23 +66,39 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             // Check if there is a valid response and the 'member' array is populated
             if (response && response.member && response.member.length > 0) {
                 var item = response.member[0]; // Since there is only 1 item in the member array
-
-                responseContent.innerHTML += "<div class='response-item'><strong>Name:</strong> <span>" + item.name + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Title:</strong> <span>" + item.title + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Description:</strong> <span>" + (item.description || 'No description available') + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>ID:</strong> <span>" + item.id + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Type:</strong> <span>" + item.type + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Modified:</strong> <span>" + item.modified + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Created:</strong> <span>" + item.created + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Revision:</strong> <span>" + item.revision + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>State:</strong> <span>" + item.state + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Owner:</strong> <span>" + item.owner + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Organization:</strong> <span>" + item.organization + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Collaboration Space:</strong> <span>" + item.collabspace + "</span></div>";
-                responseContent.innerHTML += "<div class='response-item'><strong>Cestamp:</strong> <span>" + item.cestamp + "</span></div>";
+                
+                // Create a form for displaying the data
+                responseContent.innerHTML += "<form class='response-form'>";
+            
+                // Name and Title will have inputs (text fields)
+                responseContent.innerHTML += "<div class='response-item'><strong>Name:</strong> <input type='text' value='" + item.name + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Title:</strong> <input type='text' value='" + item.title + "' readonly /></div>";
+                
+                // Description can have an input or textarea depending on length
+                responseContent.innerHTML += "<div class='response-item'><strong>Description:</strong> <textarea readonly>" + (item.description || 'No description available') + "</textarea></div>";
+                
+                // Other fields like ID and Type, etc., will be in input fields
+                responseContent.innerHTML += "<div class='response-item'><strong>ID:</strong> <input type='text' value='" + item.id + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Type:</strong> <input type='text' value='" + item.type + "' readonly /></div>";
+                
+                // Date fields (Modified, Created) - assuming they are strings, they can go in text fields
+                responseContent.innerHTML += "<div class='response-item'><strong>Modified:</strong> <input type='text' value='" + item.modified + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Created:</strong> <input type='text' value='" + item.created + "' readonly /></div>";
+                
+                // Revision, State, Owner, Organization, etc., will also use text inputs
+                responseContent.innerHTML += "<div class='response-item'><strong>Revision:</strong> <input type='text' value='" + item.revision + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>State:</strong> <input type='text' value='" + item.state + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Owner:</strong> <input type='text' value='" + item.owner + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Organization:</strong> <input type='text' value='" + item.organization + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Collaboration Space:</strong> <input type='text' value='" + item.collabspace + "' readonly /></div>";
+                responseContent.innerHTML += "<div class='response-item'><strong>Cestamp:</strong> <input type='text' value='" + item.cestamp + "' readonly /></div>";
+                
+                // Close the form
+                responseContent.innerHTML += "</form>";
             } else {
                 responseContent.innerHTML += "<div>No data available</div>";
             }
+            
 
             // Optionally, add labels if available
             if (response && response.nlsLabel) {

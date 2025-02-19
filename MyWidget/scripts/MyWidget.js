@@ -126,7 +126,7 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             
                 // Table body with item data
                 tableHTML += "<tbody><tr>";
-                tableHTML += "<td><span class='material-symbols-outlined'>add</span></td>"; // Icon added here
+                tableHTML += "<td><span class='material-symbols-outlined'></span></td>"; // Icon added here
                 tableHTML += "<td>" + item.name + "</td>";
                 tableHTML += "<td>" + item.title + "</td>";
                 tableHTML += "<td>" + (item.description || 'No description available') + "</td>";

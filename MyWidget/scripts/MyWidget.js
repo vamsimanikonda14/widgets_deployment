@@ -66,11 +66,11 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             responseContent.innerHTML = '';
             var inputs = responseForm.querySelectorAll('input, textarea, select');
             inputs.forEach(function(input) {
-                input.value = '';  // Clear the input value
+                input.value = '';  
             });
             // Check if there is a valid response and the 'member' array is populated
             if (response && response.member && response.member.length > 0) {
-                var item = response.member[0]; // Since there is only 1 item in the member array
+                var item = response.member[0]; 
             
                 // Define the CSS styles
                 var style = `
@@ -146,8 +146,8 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             
                 // Insert the style and the table inside a container for scrolling
                 responseContent.innerHTML = style + "<div class='table-container'>" + tableHTML + "</div>";
-                responseForm.style.display = 'block';  // Show the response form
-                widget.body.style.backgroundColor = '#ffffff';  // Change the background to white when the form is displayed
+                responseForm.style.display = 'block';  
+                widget.body.style.backgroundColor = '#ffffff';  
             } else {
                 responseContent.innerHTML = "<div>No data available</div>";
             }
@@ -155,17 +155,20 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             // Optionally, add labels if available
             if (response && response.nlsLabel) {
                 responseContent.innerHTML += "<hr><h3>Field Labels:</h3>";
+                responseContent.innerHTML += "<table border='1' style='width: 100%; margin-top: 10px;'><thead><tr><th>Label</th><th>Field</th></tr></thead><tbody>";
                 for (var key in response.nlsLabel) {
-                    responseContent.innerHTML += "<div><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</div>";
+                    responseContent.innerHTML += "<tr><td><strong>" + response.nlsLabel[key] + "</strong></td><td>" + key + "</td></tr>";
                 }
+                 // Close the table
+                responseContent.innerHTML += "</tbody></table>";
             }
         },
 
         resetUI: function() {
-            // Hide the response form and reset the background color
+           
             var responseForm = document.querySelector('#responseForm');
             responseForm.style.display = 'none';
-            widget.body.style.backgroundColor = '#005685';  // Reset the background color
+            widget.body.style.backgroundColor = '#005685'; 
         }
     };
 

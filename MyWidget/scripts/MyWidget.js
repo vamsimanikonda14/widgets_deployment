@@ -153,12 +153,12 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             }
 
             // Optionally, add labels if available
-            if (response && response.nlsLabel) {
-                responseContent.innerHTML += "<hr><h3>Field Labels:</h3>";
-                for (var key in response.nlsLabel) {
-                    responseContent.innerHTML += "<div><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</div>";
-                }
-            }
+           // if (response && response.nlsLabel) {
+           //     responseContent.innerHTML += "<hr><h3>Field Labels:</h3>";
+           //     for (var key in response.nlsLabel) {
+           //         responseContent.innerHTML += "<div><strong>" + response.nlsLabel[key] + ":</strong> " + key + "</div>";
+            //    }
+           // }
         },
 
         resetUI: function() {

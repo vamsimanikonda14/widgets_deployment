@@ -3,12 +3,98 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:widget="http://www.netvibes.com/ns/">
     <head>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            /* Basic styling for the body */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+
+            /* Button styles */
+            #partsButton {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 16px;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                margin: 20px 0;
+            }
+
+            #partsButton:hover {
+                background-color: #45a049;
+            }
+
+            /* Table container styling */
+            #tableContainer {
+                margin-top: 30px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+            }
+
+            /* Table styles */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0;
+                font-size: 14px;
+            }
+
+            /* Table headers */
+            th {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px;
+                text-align: left;
+            }
+
+            /* Table rows */
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+
+            /* Table cells */
+            td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            /* Add some space below the table */
+            table {
+                margin-top: 20px;
+            }
+
+            /* Styling for the table container */
+            .container {
+                width: 80%;
+                margin: 0 auto;
+                text-align: left;
+            }
+        </style>
         <script>
-            
-            require(["DS/PartsWidget/scripts/PartsWidget"],function(parts){
-                widget.addEvent("onLoad",parts.onload);
+            // Assuming you're using require.js to load a widget script
+            require(["DS/PartsWidget/scripts/PartsWidget"], function(parts) {
+                // Initialize the widget's onLoad event
+                parts.onLoad();
             });
         </script>
     </head>
-    <body></body>
+    <body>
+        <div class="container">
+            <!-- The content will be injected here dynamically -->
+        </div>
+    </body>
 </html>

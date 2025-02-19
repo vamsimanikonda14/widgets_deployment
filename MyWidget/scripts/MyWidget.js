@@ -67,6 +67,42 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             if (response && response.member && response.member.length > 0) {
                 var item = response.member[0]; // Since there is only 1 item in the member array
             
+                // Define the CSS styles
+                var style = `
+                <style>
+                    .response-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        font-family: Arial, sans-serif;
+                    }
+            
+                    .response-table th,
+                    .response-table td {
+                        padding: 12px;
+                        text-align: left;
+                        border: 1px solid #ddd;
+                    }
+            
+                    .response-table th {
+                        background-color: #f2f2f2;
+                        font-weight: bold;
+                    }
+            
+                    .response-table tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+            
+                    .response-table tr:hover {
+                        background-color: #e9e9e9;
+                    }
+            
+                    .response-table td {
+                        word-wrap: break-word;
+                    }
+                </style>
+                `;
+            
                 // Create a table for displaying the data
                 var tableHTML = "<table class='response-table'>";
             
@@ -95,8 +131,8 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                 // Close the table
                 tableHTML += "</table>";
             
-                // Insert the table into the responseContent element
-                responseContent.innerHTML = tableHTML;
+                // Insert the style and the table into the responseContent element
+                responseContent.innerHTML = style + tableHTML;
             } else {
                 responseContent.innerHTML = "<div>No data available</div>";
             }

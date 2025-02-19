@@ -3,39 +3,29 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
     
     var myWidget = {
         onLoad: function () {
-            // Creating HTML content with a more compact form-like structure
+            // Creating HTML content with the calculator structure
             widget.body.innerHTML = `
-                <div style="text-align: center;">
-                    <input type="text" id="display" disabled style="width: 230px; font-size: 1.5em; padding: 10px; text-align: right; margin-bottom: 10px;">
-                    <br>
-                    <input type="text" id="result" disabled style="width: 230px; font-size: 1.5em; padding: 10px; text-align: right; margin-bottom: 10px;">
-                    <div>
-                        <button data-value="7" style="padding: 10px; font-size: 1.3em;">7</button>
-                        <button data-value="8" style="padding: 10px; font-size: 1.3em;">8</button>
-                        <button data-value="9" style="padding: 10px; font-size: 1.3em;">9</button>
-                        <button data-value="/" style="padding: 10px; font-size: 1.3em;">/</button>
-                    </div>
-                    <div>
-                        <button data-value="4" style="padding: 10px; font-size: 1.3em;">4</button>
-                        <button data-value="5" style="padding: 10px; font-size: 1.3em;">5</button>
-                        <button data-value="6" style="padding: 10px; font-size: 1.3em;">6</button>
-                        <button data-value="*" style="padding: 10px; font-size: 1.3em;">*</button>
-                    </div>
-                    <div>
-                        <button data-value="1" style="padding: 10px; font-size: 1.3em;">1</button>
-                        <button data-value="2" style="padding: 10px; font-size: 1.3em;">2</button>
-                        <button data-value="3" style="padding: 10px; font-size: 1.3em;">3</button>
-                        <button data-value="-" style="padding: 10px; font-size: 1.3em;">-</button>
-                    </div>
-                    <div>
-                        <button data-value="0" style="padding: 10px; font-size: 1.3em;">0</button>
-                        <button data-value="." style="padding: 10px; font-size: 1.3em;">.</button>
-                        <button id="equals" style="padding: 10px; font-size: 1.3em;">=</button>
-                        <button data-value="+" style="padding: 10px; font-size: 1.3em;">+</button>
-                    </div>
-                    <div>
-                        <button id="clear" style="padding: 10px; font-size: 1.3em;">C</button>
-                        <button id="backspace" style="padding: 10px; font-size: 1.3em;">⌫</button>
+                <div class="calculator" style="background-color: #333; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                    <div class="display" id="display" style="background-color: #222; color: #fff; font-size: 2em; padding: 10px; text-align: right; border-radius: 5px; margin-bottom: 10px;">0</div>
+                    <div class="buttons" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                        <button class="clear" style="background-color: #f44336; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">C</button>
+                        <button class="operator" style="background-color: #ff9800; color: white; padding: 15px; font-size: 16px; cursor: pointer; border-radius: 5px;">/</button>
+                        <button class="operator" style="background-color: #ff9800; color: white; padding: 15px; font-size: 16px; cursor: pointer; border-radius: 5px;">*</button>
+                        <button class="operator" style="background-color: #ff9800; color: white; padding: 15px; font-size: 16px; cursor: pointer; border-radius: 5px;">-</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">7</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">8</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">9</button>
+                        <button class="operator" style="background-color: #ff9800; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">+</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">4</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">5</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">6</button>
+                        <button class="operator" style="background-color: #ff9800; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">%</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">1</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">2</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">3</button>
+                        <button class="equals" style="background-color: #2196F3; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">=</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">0</button>
+                        <button style="background-color: #4CAF50; color: white; padding: 15px; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px;">.</button>
                     </div>
                 </div>
             `;
@@ -43,22 +33,22 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
             let expression = "";
 
             function updateDisplay() {
-                document.getElementById("display").value = expression;
+                document.getElementById("display").textContent = expression || "0";
             }
 
             // Button Click Event Listener
             document.querySelectorAll("button").forEach(button => {
                 button.addEventListener("click", function () {
-                    if (this.id === "clear") {
+                    if (this.classList.contains("clear")) {
                         expression = "";
-                    } else if (this.id === "equals") {
+                    } else if (this.classList.contains("equals")) {
                         try {
                             expression = eval(expression).toString(); // Evaluate expression
                         } catch {
                             expression = "Error";
                         }
                     } else {
-                        expression += this.getAttribute("data-value") || this.textContent;
+                        expression += this.textContent || this.getAttribute("data-value");
                     }
                     updateDisplay();
                 });

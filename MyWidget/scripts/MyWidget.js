@@ -11,7 +11,40 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                                             "<div id='responseContent'></div>" +
                                             "<button id='returnBtn' style='margin-top: 20px; padding: 10px 20px; background-color: #005685; color: #fff; border: none; border-radius: 5px; cursor: pointer;'>Return to Drop Area</button>" +
                                         "</div>" +
-                                     "</div>";
+                                     "</div>"
+                                     `<style>
+                                     .response-table {
+                                        width: 100%;
+                                        border-collapse: collapse;
+                                        margin-top: 20px;
+                                        font-family: Arial, sans-serif;
+                                    }
+
+                                    .response-table th,
+                                    .response-table td {
+                                        padding: 12px;
+                                        text-align: left;
+                                        border: 1px solid #ddd;
+                                    }
+
+                                    .response-table th {
+                                        background-color: #f2f2f2;
+                                        font-weight: bold;
+                                    }
+
+                                    .response-table tr:nth-child(even) {
+                                        background-color: #f9f9f9;
+                                    }
+
+                                    .response-table tr:hover {
+                                        background-color: #e9e9e9;
+                                    }
+
+                                    .response-table td {
+                                        word-wrap: break-word;
+                                    }
+
+                                     </style>`;
 
             var theInput = document.querySelector('#mainContainer');
             DataDragAndDrop.droppable(theInput, {
@@ -68,34 +101,37 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                 var item = response.member[0]; // Since there is only 1 item in the member array
             
                 // Create a table for displaying the data
-                responseContent.innerHTML += "<table class='response-table'>";
-                
+                var tableHTML = "<table class='response-table'>";
+            
                 // Table headers
-                responseContent.innerHTML += "<thead><tr>";
-                responseContent.innerHTML += "<th>Name</th><th>Title</th><th>Description</th><th>ID</th><th>Type</th><th>Modified</th><th>Created</th><th>Revision</th><th>State</th><th>Owner</th><th>Organization</th><th>Collaboration</th><th>Cestamp</th>";
-                responseContent.innerHTML += "</tr></thead>";
-                
+                tableHTML += "<thead><tr>";
+                tableHTML += "<th>Name</th><th>Title</th><th>Description</th><th>ID</th><th>Type</th><th>Modified</th><th>Created</th><th>Revision</th><th>State</th><th>Owner</th><th>Organization</th><th>Collaboration</th><th>Cestamp</th>";
+                tableHTML += "</tr></thead>";
+            
                 // Table body with item data
-                responseContent.innerHTML += "<tbody><tr>";
-                responseContent.innerHTML += "<td>" + item.name + "</td>";
-                responseContent.innerHTML += "<td>" + item.title + "</td>";
-                responseContent.innerHTML += "<td>" + (item.description || 'No description available') + "</td>";
-                responseContent.innerHTML += "<td>" + item.id + "</td>";
-                responseContent.innerHTML += "<td>" + item.type + "</td>";
-                responseContent.innerHTML += "<td>" + item.modified + "</td>";
-                responseContent.innerHTML += "<td>" + item.created + "</td>";
-                responseContent.innerHTML += "<td>" + item.revision + "</td>";
-                responseContent.innerHTML += "<td>" + item.state + "</td>";
-                responseContent.innerHTML += "<td>" + item.owner + "</td>";
-                responseContent.innerHTML += "<td>" + item.organization + "</td>";
-                responseContent.innerHTML += "<td>" + item.collabspace + "</td>";
-                responseContent.innerHTML += "<td>" + item.cestamp + "</td>";
-                responseContent.innerHTML += "</tr></tbody>";
-                
+                tableHTML += "<tbody><tr>";
+                tableHTML += "<td>" + item.name + "</td>";
+                tableHTML += "<td>" + item.title + "</td>";
+                tableHTML += "<td>" + (item.description || 'No description available') + "</td>";
+                tableHTML += "<td>" + item.id + "</td>";
+                tableHTML += "<td>" + item.type + "</td>";
+                tableHTML += "<td>" + item.modified + "</td>";
+                tableHTML += "<td>" + item.created + "</td>";
+                tableHTML += "<td>" + item.revision + "</td>";
+                tableHTML += "<td>" + item.state + "</td>";
+                tableHTML += "<td>" + item.owner + "</td>";
+                tableHTML += "<td>" + item.organization + "</td>";
+                tableHTML += "<td>" + item.collabspace + "</td>";
+                tableHTML += "<td>" + item.cestamp + "</td>";
+                tableHTML += "</tr></tbody>";
+            
                 // Close the table
-                responseContent.innerHTML += "</table>";
+                tableHTML += "</table>";
+            
+                // Insert the table into the responseContent element
+                responseContent.innerHTML = tableHTML;
             } else {
-                responseContent.innerHTML += "<div>No data available</div>";
+                responseContent.innerHTML = "<div>No data available</div>";
             }
             
             

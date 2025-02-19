@@ -1,4 +1,4 @@
-define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData"], function (WAFData) {
+define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData,DS/PlatformAPI/PlatformAPI"], function (WAFData, PlatformAPI) {
     'use strict';
     var myWidget = {
         onLoad: function () {
@@ -30,9 +30,11 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData"], function (WA
             });
         },*/
         fetchData: function() {
-             
-                    let dataSetSpaceUrl =  "https://vdemopro1161dsy.extranet.3ds.com/3DSpace"+"/resources/v1/modeler/dseng/dseng:EngItem/search";
-                    var url = dataSetSpaceUrl+ "?$searchStr=VPMReference&$mask=dsmveng:EngItemMask.Details" ;
+                    var spaceURL = PlatformAPI.getApplicationConfiguration("app.urls.myapps");// getting 3dspace url
+                    console.log("spaceURL :: ",spaceURL);
+                   // let dataSetSpaceUrl =  "https://vdemopro1161dsy.extranet.3ds.com/3DSpace"+"/resources/v1/modeler/dseng/dseng:EngItem/search";
+                   let dataSetSpaceUrl =  spaceURL+"/resources/v1/modeler/dseng/dseng:EngItem/search"; 
+                   var url = dataSetSpaceUrl+ "?$searchStr=VPMReference&$mask=dsmveng:EngItemMask.Details" ;
                     var request = url;
     
             //let that = this;

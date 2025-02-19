@@ -1,4 +1,4 @@
-define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData,DS/PlatformAPI/PlatformAPI"], function (WAFData, PlatformAPI) {
+define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAPI/PlatformAPI"], function (WAFData, PlatformAPI) {
     'use strict';
     var myWidget = {
         onLoad: function () {

@@ -78,7 +78,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
         var header = {
         };
         var method = "GET";
-        sendRequest(url, data, header, method, callback);
+        myWidget.sendRequest(url, data, header, method, callback);
     },
       sendRequest : function (url, data, header, method, callback) {
         //var t0 = performance.now();
@@ -90,7 +90,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
             onComplete: function (data) {
                // var t1 = performance.now();
                // console.log("Time to process person request: " + (t1 - t0) + " milliseconds.");//test perfoprmance
-               this.secContext= getSecurityContext(data);
+               this.secContext= myWidget.getSecurityContext(data);
                 console.log("securitycontext : : ",this.this.secContext);
                // data.securitycontext = securitycontext;
                 callback(data); 

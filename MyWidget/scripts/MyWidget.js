@@ -6,7 +6,7 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
             // Creating HTML content with form-like structure
             widget.body.innerHTML = "<div class='main-Container' id='mainContainer' style='width: 100%; height: 100%; text-align: center; background-color:#005685; color: #ffffff; padding: 40px;'>" +
                                         "<h1>Drag and Drop Data</h1>" +
-                                        "<div id='responseForm' style=' margin-top: 20px; background-color:#ffffff; color:#333; padding: 40px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); width: 80%; max-width: 800px; margin: 0 auto; display: none;'>" +
+                                        "<div id='responseForm' style=' margin-top: 20px; background-color:#ffffff; color:#333; padding: 70px; border-radius: 24px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); width: 80%; max-width: 1070px; margin: 0 auto; display: none;'>" +
                                             "<h2 style='color: #005685;'>Response Data</h2>" +
                                             "<div id='responseContent'></div>" +
                                             "<button id='returnBtn' style='margin-top: 20px; padding: 10px 20px; background-color: #005685; color: #fff; border: none; border-radius: 5px; cursor: pointer;'>Return to Drop Area</button>" +

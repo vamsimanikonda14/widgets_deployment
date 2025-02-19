@@ -7,7 +7,7 @@
         require(["DS/PartsWidget/scripts/PartsWidget"], function (PartsWidget) {
             // Attach the onLoad event to PartWidget's onLoadWidget method
             widget.addEvent("onLoad", function() {
-                PartsWidget.onLoadWidget();  // Calling the widget load function
+                PartsWidget.myWidget();  // Calling the widget load function
                 createPartsButton();  // Creating the button once the widget is loaded
             });
 

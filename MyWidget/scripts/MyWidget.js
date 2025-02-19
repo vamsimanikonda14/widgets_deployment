@@ -70,10 +70,18 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                 // Define the CSS styles
                 var style = `
                 <style>
+                    .table-container {
+                        width: 100%;
+                        max-height: 400px; /* Set maximum height for vertical scrolling */
+                        overflow: auto;
+                        border: 1px solid #ddd;
+                        margin-top: 20px;
+                    }
+            
                     .response-table {
                         width: 100%;
+                        min-width: 800px; /* Set a fixed minimum width for the table */
                         border-collapse: collapse;
-                        margin-top: 20px;
                         font-family: Arial, sans-serif;
                     }
             
@@ -131,8 +139,8 @@ define("DS/MyWidget/scripts/MyWidget", ['DS/DataDragAndDrop/DataDragAndDrop', 'D
                 // Close the table
                 tableHTML += "</table>";
             
-                // Insert the style and the table into the responseContent element
-                responseContent.innerHTML = style + tableHTML;
+                // Insert the style and the table inside a container for scrolling
+                responseContent.innerHTML = style + "<div class='table-container'>" + tableHTML + "</div>";
             } else {
                 responseContent.innerHTML = "<div>No data available</div>";
             }

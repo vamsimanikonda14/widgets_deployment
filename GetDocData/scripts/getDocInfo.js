@@ -1,4 +1,4 @@
-define('DS/GetDocData/scripts/getDocInfo', [], function() {
+define('DS/GetDocData/scripts/getDocInfo', ['!txt/asets/config.json'], function(config) {
        "use strict";
 	   var Trail = {
 		   onLoad: function() {

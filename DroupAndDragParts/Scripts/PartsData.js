@@ -13,20 +13,27 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
             DataDragAndDrop.droppable( theDropElt , {  
                 drop : function(rs) {		
                     console.log("data----------->> ",rs);
-                    var parsedData = rs.data.items[0];  // Extractx the first item from the data array
-                    
-                    // Create the table structure
-                    var tableHtml = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th></tr></thead><tbody>";
-                    
-                    // Add a row with the data values
-                    tableHtml += "<tr>" +
-                        "<td>" + parsedData.contextId + "</td>" +
-                        "<td>" + parsedData.objectId + "</td>" +
-                        "<td>" + parsedData.objectType + "</td>" +
-                        "<td>" + parsedData.displayName + "</td>" +
-                        "</tr>";
-                    
-                    tableHtml += "</tbody></table>";
+                    if (rs && rs.data && Array.isArray(rs.data.items) && rs.data.items.length > 0) {
+                        var parsedData = rs.data.items[0];  // Extract the first item from the data array
+            
+                        // Create the table structure
+                        var tableHtml = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th></tr></thead><tbody>";
+                        
+                        // Add a row with the data values
+                        tableHtml += "<tr>" +
+                            "<td>" + parsedData.contextId + "</td>" +
+                            "<td>" + parsedData.objectId + "</td>" +
+                            "<td>" + parsedData.objectType + "</td>" +
+                            "<td>" + parsedData.displayName + "</td>" +
+                            "</tr>";
+                        
+                        tableHtml += "</tbody></table>";
+                        
+                        // Insert the table into the widget body
+                        widget.body.innerHTML = tableHtml;
+                    } else {
+                        console.error("Invalid data format:", rs);
+                    }
                     
                     // Insert the table into the widget body
                     widget.body.innerHTML = tableHtml;					    

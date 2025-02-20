@@ -5,14 +5,28 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
 			   //widget.body.innerHTML = "<p> Hello santhosh welcome to the widget</p>" ;
 
             var Style = document.createElement("style");
-            Style.textContent =  `table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 8px;
-                text-align: left;
-            }
+            Style.textContent =  `table {
+                   width: 100%;
+                   border-collapse: collapse;
+               }
+               th, td {
+                   padding: 8px;
+                   text-align: center;
+                   border: 1px solid black;
+               }
+               th {
+                   background-color: #4CAF50; /* Green background for header */
+                   color: white; /* White text color for header */
+               }
+               td {
+                   background-color: #f2f2f2; /* Light gray background for rows */
+               }
+               tr:nth-child(even) td {
+                   background-color: #e6f7ff; /* Light blue background for even rows */
+               }
+               tr:nth-child(odd) td {
+                   background-color: #f9f9f9; /* Light gray background for odd rows */
+               }
         `;
         document.head.appendChild(Style)
 
@@ -43,7 +57,8 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
                { sno: 2, type: "Doc2", name: "DOC-124", revision: "B.4", state: "Frozen" },
                { sno: 3, type: "Doc3", name: "DOC-125", revision: "C.1", state: "Released" }
            ];
-
+              //console.timeLog
+              console.log("::::info:::::::",data)
            // Dynamically adding rows to the table
            data.forEach(function(rowData) {
                var row = document.createElement("tr");

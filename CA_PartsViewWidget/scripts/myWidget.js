@@ -4,7 +4,10 @@ define("DS/CA_PartsViewWidget/scripts/MyWidget", [], function () {
     var myWidget = {
         onLoad: function () {
 
-            widget.body.innerHTML = `<head>
+            widget.body.innerHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head>
                 <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <title>Data Table</title>
@@ -73,7 +76,8 @@ define("DS/CA_PartsViewWidget/scripts/MyWidget", [], function () {
                             </tbody>
                         </table>
 
-                    </body>`
+                    </body>
+                    </html>`
 
         }
     };

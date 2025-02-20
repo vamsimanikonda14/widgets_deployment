@@ -52,6 +52,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                         console.log("data::::::::::: ",data);
                         console.log("securitycontext : authenticatedRequest : ", secContext);
                     });
+                    console.log("securitycontext :   secContext : ", secContext);
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",

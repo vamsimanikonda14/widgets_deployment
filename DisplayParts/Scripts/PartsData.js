@@ -48,8 +48,8 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                         }
                     });
                   
-                   var context =  myWidget.requestPersonData(spaceURL);
-                    console.log("securitycontext : authenticatedRequest : ",context);
+                      myWidget.requestPersonData(spaceURL);
+                    console.log("securitycontext : authenticatedRequest : ",secContext);
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",
@@ -95,8 +95,8 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                 console.log("data ---------::: ",data);
                // var t1 = performance.now();
                // console.log("Time to process person request: " + (t1 - t0) + " milliseconds.");//test perfoprmance
-               this.secContext= myWidget.getSecurityContext(data);
-                console.log("securitycontext : : ",this.secContext);
+               secContext= myWidget.getSecurityContext(data);
+                console.log("securitycontext : : ",secContext);
                // data.securitycontext = securitycontext;
                 callback(data); 
             },

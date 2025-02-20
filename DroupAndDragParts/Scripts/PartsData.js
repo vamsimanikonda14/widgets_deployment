@@ -11,9 +11,9 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
             var theDropElt = document.querySelector('#mainContainer');
 
             DataDragAndDrop.droppable( theDropElt , {  
-                drop : function(data) {		
+                drop : function(rs) {		
                     console.log("data----------->> ",data);
-                    var parsedData = data.data.items[0];  // Extractx the first item from the data array
+                    var parsedData = rs.data.items[0];  // Extractx the first item from the data array
                     
                     // Create the table structure
                     var tableHtml = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th></tr></thead><tbody>";

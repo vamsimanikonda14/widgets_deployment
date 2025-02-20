@@ -51,9 +51,12 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                             
                         }
                     });
-                  
-                    myWidget.requestPersonData(spaceURL);
-                    console.log("securitycontext : authenticatedRequest : ",this.secContext);
+                  var context;
+                    myWidget.requestPersonData(spaceURL, function() {
+                        console.log("securitycontext : authenticatedRequest : ", secContext);
+                        context=  secContext; // Use the global secContext
+                    });
+                    console.log("context ;;;;;;;;;;;;;;;;;;;;;;;;; ",context);
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",

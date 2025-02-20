@@ -5,54 +5,38 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
     var myWidget = {
         
         onLoad: function () {
-            // Create the container for the table and the drag-and-drop area
-            widget.body.innerHTML =  
-                "<div id='tableContainer'></div>" +         // Container for table
-                "<div id='dragContainer' style='width:300px;height:200px;border:1px solid black;'>Drag Part Here</div>"; // Drag and drop container
-            
-            // Enable drag-and-drop functionality on the 'dragContainer'
-            this.daragPart();
+            var html_before_drop = "<div id='mainContainer'>Drop Here</div>";
+            widget.body.innerHTML=html_before_drop ;
+            var theDropElt = widget.getElementById('mainContainer');
+
+            DataDragAndDrop.droppable( theDropElt , {  
+                drop : function(data) {		
+                    var parsedData = data.data.items[0];  // Extract the first item from the data array
+                    
+                    // Create the table structure
+                    var tableHtml = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th></tr></thead><tbody>";
+                    
+                    // Add a row with the data values
+                    tableHtml += "<tr>" +
+                        "<td>" + parsedData.contextId + "</td>" +
+                        "<td>" + parsedData.objectId + "</td>" +
+                        "<td>" + parsedData.objectType + "</td>" +
+                        "<td>" + parsedData.displayName + "</td>" +
+                        "</tr>";
+                    
+                    tableHtml += "</tbody></table>";
+                    
+                    // Insert the table into the widget body
+                    widget.body.innerHTML = tableHtml;					    
+  
+                } 
+            }) ;	
         },
 
-        daragPart: function() {
-            var dragContainer = document.getElementById('dragContainer');
-
-            DataDragAndDrop.droppable(dragContainer, {  
-                drop: function(data) {
-                    try {
-                        var dataJSON = JSON.parse(data);
-                        if (dataJSON && dataJSON.data && dataJSON.data.items && Array.isArray(dataJSON.data.items)) {
-                            // Extract the first item in the list
-                            var item = dataJSON.data.items[0];
-                            
-                            // Create a table to display the dragged data
-                            var tableHTML = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th><th>Display Type</th></tr></thead><tbody>";
-                            
-                            // Add a row for the item
-                            tableHTML += "<tr>" +
-                                "<td>" + item.contextId + "</td>" +
-                                "<td>" + item.objectId + "</td>" +
-                                "<td>" + item.objectType + "</td>" +
-                                "<td>" + item.displayName + "</td>" +
-                                "<td>" + item.displayType + "</td>" +
-                                "</tr>";
-                            
-                            tableHTML += "</tbody></table>";
-                            
-                            // Insert the table into the 'tableContainer' div
-                            document.getElementById('tableContainer').innerHTML = tableHTML;
-                        } else {
-                            console.log("Invalid data structure: No items found.");
-                        }
-                    } catch (e) {
-                        console.error("Error parsing dragged data: ", e);
-                    }					
-                }
-            }); 
-        }
+         
     };
-    widget.addEvent('onLoad', myWidget.onLoad);
-    return myWidget;
+    widget.addEvent('onLoad',  myWidget.onLoad);
+    
     
 });
 

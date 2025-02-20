@@ -129,28 +129,77 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
         return sctx;
     },
 
-        renderTable: function (data) {
-            // Dynamically generate a table based on the fetched data
-            var tableHtml = "<table border='1'>" +
-                            "<thead>" +
-                            "<tr><th>Type</th><th>Name</th><th>Revision</th><th>Maturity</th></tr>" + // Table headers
-                            "</thead><tbody>";
-
-            // Loop through the API data to generate table rows
-            data.member.forEach(function (part) {
-                tableHtml += "<tr>" +
-                             "<td>" + part.type + "</td>" +
-                             "<td>" + part.name + "</td>" +
-                             "<td>" + part.revision + "</td>" +
-                             "<td>" + part.state + "</td>" +
-                             "</tr>";
-            });
-
-            tableHtml += "</tbody></table>";
-
-            // Inject the table HTML into the table container
-            $('#tableContainer').html(tableHtml);
-        }
+    renderTable: function (data) {
+        // Add the CSS styles dynamically
+        var styles = `
+            <style>
+                .styled-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 20px 0;
+                    font-family: Arial, sans-serif;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
+    
+                .styled-table th {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 15px;
+                    text-align: left;
+                }
+    
+                .styled-table td {
+                    padding: 10px 15px;
+                    text-align: left;
+                    border: 1px solid #ddd;
+                }
+    
+                .styled-table tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+    
+                .styled-table tr:hover {
+                    background-color: #ddd;
+                }
+    
+                .styled-table {
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
+    
+                #tableContainer {
+                    max-width: 100%;
+                    overflow-x: auto;
+                }
+            </style>
+        `;
+    
+        // Inject the CSS styles into the head of the document
+        $('head').append(styles);
+    
+        // Dynamically generate the table based on the fetched data
+        var tableHtml = "<table class='styled-table'>" +
+                        "<thead>" +
+                        "<tr><th>Type</th><th>Name</th><th>Revision</th><th>Maturity</th></tr>" + // Table headers
+                        "</thead><tbody>";
+    
+        // Loop through the API data to generate table rows
+        data.member.forEach(function (part) {
+            tableHtml += "<tr>" +
+                         "<td>" + part.type + "</td>" +
+                         "<td>" + part.name + "</td>" +
+                         "<td>" + part.revision + "</td>" +
+                         "<td>" + part.state + "</td>" +
+                         "</tr>";
+        });
+    
+        tableHtml += "</tbody></table>";
+    
+        // Inject the table HTML into the table container
+        $('#tableContainer').html(tableHtml);
+    }
+    
     };
  
     widget.addEvent('onLoad', myWidget.onLoad);

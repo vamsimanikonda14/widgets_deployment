@@ -5,13 +5,14 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
     var myWidget = {
         
         onLoad: function () {
-            var html_before_drop = "<div id='mainContainer'>Drop Here</div>";
+            var html_before_drop = "<div class='main-Container' id='mainContainer'>Drop Here</div>";
             widget.body.innerHTML=html_before_drop ;
-            var theDropElt = widget.getElementById('mainContainer');
+            var theDropElt = document.querySelector('#mainContainer');
 
             DataDragAndDrop.droppable( theDropElt , {  
                 drop : function(data) {		
-                    var parsedData = data.data.items[0];  // Extract the first item from the data array
+                    console.log("data----------->> ",data);
+                    var parsedData = data.data.items[0];  // Extractx the first item from the data array
                     
                     // Create the table structure
                     var tableHtml = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th></tr></thead><tbody>";

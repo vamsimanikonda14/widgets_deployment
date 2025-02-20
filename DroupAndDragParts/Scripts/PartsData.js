@@ -13,7 +13,7 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
             DataDragAndDrop.droppable( theDropElt , {  
                 drop : function(data) {		
                     console.log("data----------->> ",data);
-                     rs = JSON.parse(data);
+                    var  rs = JSON.parse(data);
                     if (rs && rs.data && Array.isArray(rs.data.items) && rs.data.items.length > 0) {
                         var parsedData = rs.data.items[0];  // Extract the first item from the data array
             

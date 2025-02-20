@@ -5,7 +5,8 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
     var myWidget = {
         
         onLoad: function () {
-            var html_before_drop = "<div class='main-Container' id='mainContainer'>Drop Here</div>";
+            var html_before_drop = "<div class='main-Container' id='mainContainer'>"+
+            <h1>Droup here</h1>+"</div>";
             widget.body.innerHTML=html_before_drop ;
             var theDropElt = document.querySelector('#mainContainer');
 

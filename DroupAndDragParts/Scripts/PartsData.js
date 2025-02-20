@@ -12,7 +12,7 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
 
             DataDragAndDrop.droppable( theDropElt , {  
                 drop : function(rs) {		
-                    console.log("data----------->> ",data);
+                    console.log("data----------->> ",rs);
                     var parsedData = rs.data.items[0];  // Extractx the first item from the data array
                     
                     // Create the table structure

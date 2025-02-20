@@ -46,13 +46,15 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                             
                         }
                     });
-                  
+                  var context;
                     myWidget.requestPersonData(spaceURL, function(data) {
                         // Now you can safely access secContext after the request has completed
                         console.log("data::::::::::: ",data);
                         console.log("securitycontext : authenticatedRequest : ", secContext);
+                        context = secContext;
+                        console.log("context :     : ", context);
                     });
-                    console.log("securitycontext :   secContext : ", secContext);
+                    console.log("securitycontext :   secContext : ", context);
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",

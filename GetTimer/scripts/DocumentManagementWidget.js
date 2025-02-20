@@ -68,7 +68,7 @@ define("DS/GetTimer/scripts/DocumentManagementWidget", [], function () {
                 <td>🔗 Design_Specs_V1</td>
                 <td>
                   <select class="docType">
-                    <option value="CAD" selected>🏗 CAD File</option>
+                    <option value="CAD" selected>🖥️ CAD File</option>
                     <option value="Specification">📜 Specification</option>
                     <option value="PDF">📄 PDF Document</option>
                   </select>
@@ -80,7 +80,7 @@ define("DS/GetTimer/scripts/DocumentManagementWidget", [], function () {
                 <td>📝 Requirements_Doc</td>
                 <td>
                   <select class="docType">
-                    <option value="CAD">🏗 CAD File</option>
+                    <option value="CAD">🖥️ CAD File</option>
                     <option value="Specification" selected>📜 Specification</option>
                     <option value="PDF">📄 PDF Document</option>
                   </select>
@@ -92,7 +92,7 @@ define("DS/GetTimer/scripts/DocumentManagementWidget", [], function () {
                 <td>📂 Project_Plan</td>
                 <td>
                   <select class="docType">
-                    <option value="CAD">🏗 CAD File</option>
+                    <option value="CAD">🖥️ CAD File</option>
                     <option value="Specification">📜 Specification</option>
                     <option value="PDF" selected>📄 PDF Document</option>
                   </select>
@@ -106,7 +106,8 @@ define("DS/GetTimer/scripts/DocumentManagementWidget", [], function () {
           <div class="actions">
             <button id="previewBtn">🔍 Preview</button>
             <button id="downloadBtn">⬇️ Download</button>
-            <button id="checkInOutBtn">🔄 Check-In/Out</button>
+            <button id="checkInBtn">🔄 Check-In</button>
+			 <button id="checkOutBtn">🔄 Check-Out</button>
           </div>
         </div>
       `;

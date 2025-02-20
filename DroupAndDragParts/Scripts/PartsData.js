@@ -10,37 +10,67 @@ define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAn
             widget.body.innerHTML=html_before_drop ;
             var theDropElt = document.querySelector('#mainContainer');
 
-            DataDragAndDrop.droppable( theDropElt , {  
-                drop : function(data) {		
-                    console.log("data----------->> ",data);
-                    var  rs = JSON.parse(data);
+            DataDragAndDrop.droppable(theDropElt, {
+                drop: function(data) {
+                    console.log("data----------->> ", data);
+                    var rs = JSON.parse(data);
                     if (rs && rs.data && Array.isArray(rs.data.items) && rs.data.items.length > 0) {
-                        var parsedData = rs.data.items[0];  // Extract the first item from the data array
+                        var parsedData = rs.data.items[0]; // Extract the first item from the data array
             
-                        // Create the table structure
-                        var tableHtml = "<table border='1'><thead><tr><th>Context ID</th><th>Object ID</th><th>Object Type</th><th>Display Name</th></tr></thead><tbody>";
-                        
-                        // Add a row with the data values
-                        tableHtml += "<tr>" +
-                            "<td>" + parsedData.contextId + "</td>" +
-                            "<td>" + parsedData.objectId + "</td>" +
-                            "<td>" + parsedData.objectType + "</td>" +
-                            "<td>" + parsedData.displayName + "</td>" +
-                            "</tr>";
-                        
-                        tableHtml += "</tbody></table>";
-                        
+                        // Create the table structure with some styles
+                        var tableHtml = `
+                            <style>
+                                table {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    margin: 20px 0;
+                                    font-family: Arial, sans-serif;
+                                    background-color: #f9f9f9;
+                                }
+                                th, td {
+                                    padding: 12px 15px;
+                                    text-align: left;
+                                    border: 1px solid #ddd;
+                                }
+                                th {
+                                    background-color: #4CAF50;
+                                    color: white;
+                                }
+                                tr:nth-child(even) {
+                                    background-color: #f2f2f2;
+                                }
+                                tr:hover {
+                                    background-color: #ddd;
+                                }
+                            </style>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Context ID</th>
+                                        <th>Object ID</th>
+                                        <th>Object Type</th>
+                                        <th>Display Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>${parsedData.contextId}</td>
+                                        <td>${parsedData.objectId}</td>
+                                        <td>${parsedData.objectType}</td>
+                                        <td>${parsedData.displayName}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        `;
+            
                         // Insert the table into the widget body
                         widget.body.innerHTML = tableHtml;
                     } else {
                         console.error("Invalid data format:", rs);
                     }
-                    
-                    // Insert the table into the widget body
-                    widget.body.innerHTML = tableHtml;					    
-  
-                } 
-            }) ;	
+                }
+            });
+                
         },
 
          

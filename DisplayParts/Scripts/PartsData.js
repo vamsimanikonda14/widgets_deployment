@@ -1,8 +1,7 @@
 define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAPI/PlatformAPI","DS/i3DXCompassServices/i3DXCompassServices"], function (WAFData, PlatformAPI, i3DXCompassServices) {
     'use strict';
-    var secContext = "";
+    var secContext;
     var myWidget = {
-        
         onLoad: function () {
            // this.WAFData = WAFData;
             widget.body.innerHTML =  
@@ -48,8 +47,11 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                         }
                     });
                   
-                      myWidget.requestPersonData(spaceURL);
-                    console.log("securitycontext : authenticatedRequest : ",secContext);
+                    myWidget.requestPersonData(spaceURL, function(data) {
+                        // Now you can safely access secContext after the request has completed
+                        console.log("data::::::::::: ",data);
+                        console.log("securitycontext : authenticatedRequest : ", secContext);
+                    });
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",

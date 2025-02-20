@@ -3,6 +3,20 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
 	   var Trail = {
 		   onLoad: function() {
 			   //widget.body.innerHTML = "<p> Hello santhosh welcome to the widget</p>" ;
+
+            var Style = document.createElement("style");
+            Style.textContent =  `table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+        `;
+        document.head.appendChild(Style)
+
+
                  // Create the heading for the document part information
            var heading = document.createElement("h2");
            heading.textContent = "Document Part's Information";

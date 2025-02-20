@@ -40,7 +40,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                     var request = url;
                     i3DXCompassServices.getPlatformServices({
                         onComplete: function(rs) {
-                            rs = rs.trim();
+                           // rs = rs.trim();
                             if (rs && rs.startsWith('{') && rs.endsWith('}')) {
                                 var jsonRes = JSON.parse(rs);
                                 console.log('getPlatformServices', jsonRes);
@@ -53,7 +53,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                     });
                   
                     myWidget.requestPersonData(spaceURL);
-                    
+                    console.log("securitycontext : authenticatedRequest : ",this.secContext);
             //let that = this;
             WAFData.authenticatedRequest(request, {
                 method: "GET",

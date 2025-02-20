@@ -40,9 +40,15 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
                     var request = url;
                     i3DXCompassServices.getPlatformServices({
                         onComplete: function(rs) {
-                            var jsonRes = JSON.parse(rs);
-                            console.info('getPlatformServices', rs);
-                            console.info('3d space url ', jsonRes[0] );
+                            rs = rs.trim();
+                            if (rs && rs.startsWith('{') && rs.endsWith('}')) {
+                                var jsonRes = JSON.parse(rs);
+                                console.log('getPlatformServices', jsonRes);
+                                console.log('3d space url ', jsonRes[0]);
+                            } else {
+                                console.error('Invalid JSON response:', rs);
+                            }
+                            
                         }
                     });
                   
@@ -72,6 +78,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
      
     },
       requestPersonData : function (spaceURL,callback) {
+        console.log("requestPersonData called");
         var url = spaceURL + "/resources/modeler/pno/person?current=true&select=firstname&select=lastname&select=collabspaces&select=preferredcredentials";
         var data = {
         };
@@ -81,6 +88,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
         myWidget.sendRequest(url, data, header, method, callback);
     },
       sendRequest : function (url, data, header, method, callback) {
+        console.log("sendRequest called");
         //var t0 = performance.now();
         WAFData.authenticatedRequest(url, {
             method: method,
@@ -88,10 +96,11 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
             headers: header,
             type: 'json',
             onComplete: function (data) {
+                console.log("data ---------::: ",data);
                // var t1 = performance.now();
                // console.log("Time to process person request: " + (t1 - t0) + " milliseconds.");//test perfoprmance
                this.secContext= myWidget.getSecurityContext(data);
-                console.log("securitycontext : : ",this.this.secContext);
+                console.log("securitycontext : : ",this.secContext);
                // data.securitycontext = securitycontext;
                 callback(data); 
             },
@@ -102,6 +111,7 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData","DS/PlatformAP
         });
     },
       getSecurityContext :function(data){
+        console.log("getSecurityContext ---------::: ",data);
         var sctx;
         if(data.preferredcredentials){    
             var obj = data.preferredcredentials;

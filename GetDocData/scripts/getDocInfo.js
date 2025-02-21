@@ -1,6 +1,6 @@
-define('DS/GetDocData/scripts/getDocInfo', [], function() {
+define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData"], function(WAFData) {
        "use strict";
-	   var Trail = {
+	   var getInfo = {
 		   onLoad: function() {
 			   //widget.body.innerHTML = "<p> Hello santhosh welcome to the widget</p>" ;
 
@@ -15,7 +15,9 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
                    border: 1px solid black;
                }
                th {
-                   background-color: #4CAF50; /* Green background for header */
+                  /* background-color: #4CAF50;  Green background for header
+                   color: white;  White text color for header */
+                   background-color: #A2CFFE; /* Baby blue background for header */
                    color: white; /* White text color for header */
                }
                td {
@@ -60,6 +62,12 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
               //console.timeLog
               console.log("::::info:::::::",data)
            // Dynamically adding rows to the table
+
+
+           getInfo.
+
+
+
            data.forEach(function(rowData) {
                var row = document.createElement("tr");
 
@@ -88,6 +96,6 @@ define('DS/GetDocData/scripts/getDocInfo', [], function() {
 
 		   }
 	   };
-  widget.addEvent('onLoad', Trail.onLoad);
+  widget.addEvent('onLoad', getInfo.onLoad);
 }
 );

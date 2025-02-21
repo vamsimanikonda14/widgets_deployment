@@ -98,7 +98,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompass
            getDocInfo: function() {
             var spaceURL = PlatformAPI.getApplicationConfiguration("app.urls.myapps"); // getting 3dspace URl from our here 
             console.log("3DSpace URL ::::::::",spaceURL);
-            var dataSetSpaceURL =  spaceURL+"resources/v1/modeler/documents/search";
+            var dataSetSpaceURL =  spaceURL+"/resources/v1/modeler/documents/search";
             console.log("dataset URL:::::::::",dataSetSpaceURL);
             var url = dataSetSpaceURL+"?searchStr=TitleOfDocument+(current:*)&$top=30&$skip=10";
             console.log("URL ::::::::::::",url);

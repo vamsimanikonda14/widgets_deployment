@@ -68,8 +68,8 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
             // Dynamically adding rows to the table
 
 
-            getInfo.getDocInfo();
-
+            var res = getInfo.getDocInfo();
+            console.log(":::::response ::::::",res);
 
 
             data.forEach(function (rowData) {

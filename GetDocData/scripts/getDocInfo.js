@@ -64,7 +64,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
                 { sno: 3, type: "Doc3", name: "DOC-125", revision: "C.1", state: "Released" }
             ];
             //console.timeLog
-            console.log("::::info:::::::", data)
+            //console.log("::::info:::::::", data)
             // Dynamically adding rows to the table
 
 
@@ -117,14 +117,14 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
                     onComplete : function(response)
                     {
                         console.log("Succeed::::::::",response);
-                        let DocJsonData = response;
+                        return DocJsonData; 
                     },
                     onFailure : function(error) {
                     console.log("Error::::::::",error);
                     }
                 }
             );
-            return DocJsonData;
+            
         }
     };
     widget.addEvent('onLoad', getInfo.onLoad);

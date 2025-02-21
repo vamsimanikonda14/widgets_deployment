@@ -1,4 +1,4 @@
-define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (WAFData) {
+define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData","DS/PlatformAPI/PlatformAPI], function (WAFData,API) {
     'use strict';
 
     var myWidget = {
@@ -33,6 +33,8 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
                     console.log("On complete", data);
                     if (data && data.member) {
                         myWidget.renderTable(data.member); // Ensure data.member exists
+						var topicName = 'CAAMyApp';
+						 API.publish(topicName, data );
                     }
                 },
                 onFailure: function (error) {

@@ -1,9 +1,11 @@
 define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices","DS/PlatformAPI/PlatformAPI"], function(WAFData, i3DXCompassServices,PlatformAPI) {
        "use strict";
+       var secContext;
 	   var getInfo = {
+        
 		   onLoad: function() {
 			   //widget.body.innerHTML = "<p> Hello santhosh welcome to the widget</p>" ;
-
+            
             var Style = document.createElement("style");
             Style.textContent =  `table {
                    width: 100%;

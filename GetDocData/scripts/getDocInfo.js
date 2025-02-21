@@ -118,6 +118,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
                     {
                         console.log("Succeed::::::::",response);
                         //return DocJsonData; 
+                        callbak (response);
                     },
                     onFailure : function(error) {
                     console.log("Error::::::::",error);

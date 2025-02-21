@@ -1,4 +1,4 @@
-define("DS/PartsWidget/scripts/SubscriberWidget", [], function () {
+define("DS/publishAndSubscribe/scripts/Subscribe", [], function () {
     'use strict';
 
     var subscriberWidget = {

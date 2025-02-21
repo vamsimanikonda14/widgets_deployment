@@ -1,4 +1,4 @@
-define("DS/DragAndDropWidget/Scripts/DragandDropPartsWidget", ["DS/DragAndDrop/DragAndDrop"], function (DragAndDrop) {
+define("DS/DragAndDropWidget/Scripts/DragAndDropWidget", ["DS/DragAndDrop/DragAndDrop"], function (DragAndDrop) {
     'use strict';
     
     var secContext = "";

@@ -29,7 +29,8 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
                 onComplete: function (data) {
                     console.log("On complete", data);
                     if (data && data.member) {
-                        myWidget.renderTable(data.member); // Ensure data.member exists
+                        // Publish the event with data
+                        myWidget.publishData("partsDataUpdated", data.member); // Event name: "partsDataUpdated"
                     }
                 },
                 onFailure: function (error) {
@@ -58,6 +59,12 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
 
             // Inject the table HTML into the table container
             $('#tableContainer').html(tableHtml);
+        },
+
+        // Method to publish the event with data
+        publishData: function (eventName, data) {
+            var event = new CustomEvent(eventName, { detail: data });
+            window.dispatchEvent(event);
         }
     };
 

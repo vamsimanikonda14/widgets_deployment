@@ -3,6 +3,7 @@ define("DS/CA_PartsViewWidget/scripts/MyWidget", [], function () {
 
     var myWidget = {
         onLoad: function () {
+            console.log("entgered......");
             widget.body.innerHTML = `
                 <style>
                     table {

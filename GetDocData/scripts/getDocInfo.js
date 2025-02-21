@@ -1,4 +1,4 @@
-define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], function(WAFData, i3DXCompassServices ) {
+define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices","DS/PlatformAPI/PlatformAPI"], function(WAFData, i3DXCompassServices,PlatformAPI) {
        "use strict";
 	   var getInfo = {
 		   onLoad: function() {
@@ -96,11 +96,11 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompass
 
 		   },
            getDocInfo: function() {
-
-
+            var spaceURL = PlatformAPI.getApplicationConfiguration("app.urls.myapps"); // getting 3dspace URl from our here 
+            console.log("3DSpace URL ::::::::",spaceURL);
 
            }
 	   };
   widget.addEvent('onLoad', getInfo.onLoad);
 }
-);
+); 

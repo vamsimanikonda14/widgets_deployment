@@ -68,7 +68,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
             // Dynamically adding rows to the table
 
 
-            var res = getInfo.getDocInfo();
+            getInfo.getDocInfo(docTitle, function(data) {
             console.log(":::::response ::::::",res);
 
 
@@ -97,7 +97,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
             widget.body.appendChild(heading);
             widget.body.appendChild(table);;
 
-
+        });
         },
         getDocInfo: function () {
             var DocJsonData;

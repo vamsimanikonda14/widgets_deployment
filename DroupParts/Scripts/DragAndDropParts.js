@@ -5,18 +5,34 @@ define("DS/DroupParts/Scripts/DragAndDropParts", ["DS/DataDragAndDrop/DataDragAn
     var myWidget = {
         
         onLoad: function () {
-            var html_before_drop = "<div class='main-Container' id='mainContainer'>"+
-            "<h1>Droup here</h1>"+"</div>";
-            widget.body.innerHTML=html_before_drop ;
-            var theDropElt = document.querySelector('#mainContainer');
+            var html_before_drop = `
+                <div class='main-Container' id='mainContainer'>
+                    <button id="dropButton" style="padding: 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; border-radius: 5px;">
+                        Drop here
+                    </button>
+                </div>`;
+                
+            // Set the widget body content to the button
+            widget.body.innerHTML = html_before_drop;
 
-            DataDragAndDrop.droppable(theDropElt, {
+            // Center the button on the page using CSS
+            var mainContainer = document.getElementById('mainContainer');
+            mainContainer.style.position = 'fixed';
+            mainContainer.style.top = '50%';
+            mainContainer.style.left = '50%';
+            mainContainer.style.transform = 'translate(-50%, -50%)';
+            mainContainer.style.textAlign = 'center';
+            
+            var dropButton = document.getElementById('dropButton');
+
+            // Set up the droppable functionality
+            DataDragAndDrop.droppable(dropButton, {
                 drop: function(data) {
                     console.log("data----------->> ", data);
                     var rs = JSON.parse(data);
                     if (rs && rs.data && Array.isArray(rs.data.items) && rs.data.items.length > 0) {
                         var parsedData = rs.data.items[0]; // Extract the first item from the data array
-            
+                        
                         // Create the table structure with some styles
                         var tableHtml = `
                             <style>
@@ -62,7 +78,7 @@ define("DS/DroupParts/Scripts/DragAndDropParts", ["DS/DataDragAndDrop/DataDragAn
                                 </tbody>
                             </table>
                         `;
-            
+
                         // Insert the table into the widget body
                         widget.body.innerHTML = tableHtml;
                     } else {
@@ -72,10 +88,7 @@ define("DS/DroupParts/Scripts/DragAndDropParts", ["DS/DataDragAndDrop/DataDragAn
             });
                 
         },
-
-         
     };
-    widget.addEvent('onLoad',  myWidget.onLoad);
     
-    
+    widget.addEvent('onLoad', myWidget.onLoad);
 });

@@ -59,13 +59,9 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData","DS/PlatformA
 
             // Inject the table HTML into the table container
             $('#tableContainer').html(tableHtml);
+			API.publish("publishedData", data );
         },
-
-        // Method to publish the event with data
-        publishData: function (topicName, data) {
-           // var event = new CustomEvent(eventName, { detail: data });
-            API.publish(topicName, data );
-        }
+	 
     };
 
     // Return the widget object to be used in the main script

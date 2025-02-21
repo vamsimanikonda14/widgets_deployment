@@ -1,4 +1,4 @@
-define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (WAFData) {
+define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData","DS/PlatformAPI/PlatformAPI"], function (WAFData,API) {
     'use strict';
 
     var myWidget = {
@@ -62,9 +62,9 @@ define("DS/PartsWidget/scripts/PartsWidget", ["DS/WAFData/WAFData"], function (W
         },
 
         // Method to publish the event with data
-        publishData: function (eventName, data) {
-            var event = new CustomEvent(eventName, { detail: data });
-            window.dispatchEvent(event);
+        publishData: function (topicName, data) {
+           // var event = new CustomEvent(eventName, { detail: data });
+            API.publish(topicName, data );
         }
     };
 

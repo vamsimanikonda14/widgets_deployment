@@ -1,0 +1,51 @@
+<dom-module id="PublishWidget">
+    <template>
+      <div>
+        <!-- Bind hidden attribute to is_loaded property -->
+        <label id="json-label" for="json-input" hidden$="[[!is_loaded]]">Enter the JSON data here:</label>
+        <textarea id="json-input" rows="10" cols="40"></textarea>
+      </div>
+    </template>
+  
+    <script type="text/javascript">
+      Polymer({
+        is: 'PublishWidget',
+  
+        // Properties for is_loaded and enableInputs
+        properties: {
+          is_loaded: {
+            type: Boolean,
+            value: false // Initially false, label is hidden
+          },
+          enableInputs: {
+            type: Boolean,
+            value: true // Controls if inputs are enabled or not
+          }
+        },
+  
+        // Lifecycle method called when the element is attached to the DOM
+        ready: function () {
+          let _this = this;
+  
+          require(
+            [
+              "DS/PlatformAPI/PlatformAPI"
+            ],
+            function (PlatformAPI) {
+              // Register event listeners here
+              widget.addEvent("onLoad", _this.onLoad.bind(_this));
+            }
+          );
+        },
+  
+        // Event handler for the 'onLoad' event
+        onLoad: function () {
+          console.log("Widget is loaded");
+  
+          // Set is_loaded to true to show the label
+          this.is_loaded = true;
+        }
+      });
+    </script>
+  </dom-module>
+  

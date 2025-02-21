@@ -5,7 +5,9 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompass
         
 		   onLoad: function() {
 			   //widget.body.innerHTML = "<p> Hello santhosh welcome to the widget</p>" ;
-            
+               console.log("---before");
+               var docTitle = widget.getValue("documentTitle");
+               console.log("docTitle::::",docTitle);
             var Style = document.createElement("style");
             Style.textContent =  `table {
                    width: 100%;

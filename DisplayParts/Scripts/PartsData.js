@@ -4,19 +4,19 @@ define("DS/DisplayParts/Scripts/PartsData", ["DS/WAFData/WAFData", "DS/PlatformA
     var myWidget = {
         onLoad: function () {
 
-            fetch("Scripts/table.html")
-                .then((tfile) => tfile.text())  // <-- Missing parentheses ()
-                .then((html) => { widget.body.innerHTML = html });
+            // fetch("Scripts/table.html")
+            //     .then((tfile) => tfile.text())  // <-- Missing parentheses ()
+            //     .then((html) => { widget.body.innerHTML = html });
 
-            //    // this.WAFData = WAFData;
-            //     widget.body.innerHTML =  
-            //         "<button id='partsButton'>Parts</button>" + // Add button
-            //         "<div id='tableContainer'></div>"; // Container for table
+            // this.WAFData = WAFData;
+            widget.body.innerHTML =
+                "<button id='partsButton'>Parts</button>" + // Add button
+                "<div id='tableContainer'></div>"; // Container for table
 
-            //     // Button click event
-            //     $('#partsButton').on('click', function () {
-            //         myWidget.fetchData();
-            //     });
+            // Button click event
+            $('#partsButton').on('click', function () {
+                myWidget.fetchData();
+            });
         },
 
         /*  fetchData: function () {

@@ -1,4 +1,4 @@
-define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData"], function(WAFData) {
+define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], function(WAFData, i3DXCompassServices ) {
        "use strict";
 	   var getInfo = {
 		   onLoad: function() {
@@ -64,7 +64,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData"], function(WAFD
            // Dynamically adding rows to the table
 
 
-           getInfo.
+           getInfo.getDocInfo();
 
 
 
@@ -94,7 +94,12 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData"], function(WAFD
            widget.body.appendChild(table);;
            
 
-		   }
+		   },
+           getDocInfo: function() {
+
+
+
+           }
 	   };
   widget.addEvent('onLoad', getInfo.onLoad);
 }

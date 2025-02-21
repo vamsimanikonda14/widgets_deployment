@@ -5,15 +5,17 @@ define("DS/PartsWidget/scripts/SubscriberWidget", [], function () {
         onLoad: function () {
                var sub ;
      
-		sub = API.subscribe("publishedData", function (data) {
-       //Do the work ...  
-		console.log('Received from: ',data);
+			sub = API.subscribe("publishedData", function (data) {
+					//Do the work ...  
+					console.log('Received from: ',data);
       
-       // Unsubscribing sub to avoid getting more messages
-		API.unsubscribe(sub);
-    });
-            });
-        },
+					// Unsubscribing sub to avoid getting more messages
+					API.unsubscribe(sub);
+			});
+           
+        }
 
          
+	}
+	Widget.addEvent('onLoad',subscriberWidget.onLoad);
 });

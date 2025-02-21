@@ -113,13 +113,8 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
                     'method': 'GET',
                     'type': 'json',
                     'headers': {},
-
                 }
-
             );
-
-
-
         }
     };
     widget.addEvent('onLoad', getInfo.onLoad);

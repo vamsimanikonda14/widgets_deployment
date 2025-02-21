@@ -5,7 +5,7 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
         onLoad: function () {
 
             fetch("scripts/table.html")
-                .then((tfile) => tfile.text).
+                .then((tfile) => tfile.text()).
                 then((html) => { widget.body.innerHTML = html })
         }
 

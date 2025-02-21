@@ -1,4 +1,4 @@
-define("DS/DroupAndDragParts/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI"], function (DataDragAndDrop,PlatformAPI) {
+define("DS/WidgetIntraction/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI"], function (DataDragAndDrop,PlatformAPI) {
     'use strict';
     
     var secContext = "";

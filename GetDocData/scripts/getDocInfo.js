@@ -100,6 +100,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
 
         },
         getDocInfo: function () {
+            var DocJsonData;
             var docTitle = widget.getValue("documentTitle");
             console.log("docTitle::::", docTitle);
             var spaceURL = PlatformAPI.getApplicationConfiguration("app.urls.myapps"); // getting 3dspace URl from our here 
@@ -116,9 +117,14 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
                     onComplete : function(response)
                     {
                         console.log("Succeed::::::::",response);
+                        let DocJsonData = response;
+                    },
+                    onFailure : function(error) {
+                    console.log("Error::::::::",error);
                     }
                 }
             );
+            return DocJsonData;
         }
     };
     widget.addEvent('onLoad', getInfo.onLoad);

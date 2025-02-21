@@ -14,6 +14,7 @@ define("DS/WidgetIntraction/Scripts/PartsData", ["DS/DataDragAndDrop/DataDragAnd
                 drop: function(data) {
                     console.log("data----------->> ", data);
                     PlatformAPI.publish("PartsData", data );
+                    console.log("data----------->> ", PlatformAPI.publish("PartsData", data ));
                        
                 }
             });

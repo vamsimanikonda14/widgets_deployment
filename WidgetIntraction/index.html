@@ -4,10 +4,13 @@
     <head>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
        <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>-->
-       <link rel="import" href="bower_components/polymer/polymer.html">
-       <link rel="import" href="elements/PublishWidget.html">
+
+        <script>
+            
+            require(["DS/WidgetIntraction/Scripts/PartsData"],function(myWidget){
+                widget.addEvent("onLoad",myWidget.onload);
+            });
+        </script>
     </head>
-    <body>
-        <PublishWidget></PublishWidget>
-    </body>
+    <body></body>
 </html>

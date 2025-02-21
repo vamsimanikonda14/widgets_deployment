@@ -113,6 +113,10 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
                     'method': 'GET',
                     'type': 'json',
                     'headers': {},
+                    onComplete : function(response)
+                    {
+                        console.log("Succeed::::::::",response);
+                    }
                 }
             );
         }

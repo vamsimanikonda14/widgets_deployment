@@ -7,12 +7,12 @@ define( "DS/SubscribePart/Scripts/PartsData", ["DS/PlatformAPI/PlatformAPI"], fu
         onLoad: function () {
             var sub ;
      
-            sub = API.subscribe("PartsDataPublish", function (data) {
+            sub = PlatformAPI.subscribe("PartsDataPublish", function (data) {
                //Do the work ...  
                console.log('Received from: ',data );
               
                // Unsubscribing sub to avoid getting more messages
-               API.unsubscribe(sub);
+               PlatformAPI.unsubscribe(sub);
             });
         } 
 

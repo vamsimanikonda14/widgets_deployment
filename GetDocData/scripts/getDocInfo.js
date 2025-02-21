@@ -9,6 +9,7 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
             var docTitle = widget.getValue("documentTitle");
             console.log("docTitle::::", docTitle);
             var Style = document.createElement("style");
+            getInfo.getDocInfo();
             Style.textContent = `table {
                    width: 100%;
                    border-collapse: collapse;
@@ -68,8 +69,8 @@ define('DS/GetDocData/scripts/getDocInfo', ["DS/WAFData/WAFData", "DS/i3DXCompas
             // Dynamically adding rows to the table
 
 
-            var res = getInfo.getDocInfo();
-            console.log(":::::response ::::::",res);
+            //var res = getInfo.getDocInfo();
+            console.log(":::::response ::::::");
 
 
             data.forEach(function (rowData) {

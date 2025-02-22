@@ -1,11 +1,11 @@
 define("DS/MyWidget2/scripts/MyWidget", [], function () {
     'use strict';
-    
+
     var myWidget = {
         onLoad: function () {
             // Adding CSS styles
-            widget.body.innerHTML = `
-                <style>
+            widget.body.innerHTML =
+                `<style>
                     .calculator {
                         background-color: #333;
                         border-radius: 10px;
@@ -69,8 +69,8 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
                         <button class="number">0</button>
                         <button class="number">.</button>
                     </div>
-                </div>
-            `;
+                </div>`
+                ;
 
             let expression = "";
 
@@ -82,10 +82,10 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
             document.querySelectorAll("button").forEach(button => {
                 button.addEventListener("click", function () {
                     if (this.classList.contains("clear")) {
-                        expression = "";
+                        expression = "0";
                     } else if (this.classList.contains("equals")) {
                         try {
-                            expression = eval(expression).toString(); // Evaluate expression
+                            expression = b(expression).toString(); // Evaluate expression
                         } catch {
                             expression = "Error";
                         }

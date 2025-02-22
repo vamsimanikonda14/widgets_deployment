@@ -1,5 +1,4 @@
 define("DS/PartViewWidgetDev/scripts/MyWidget", [], function (
-
 ) {
     'use strict';
 

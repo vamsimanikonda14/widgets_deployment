@@ -3,10 +3,17 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
 
     var myWidget = {
         onLoad: function () {
+            // Adding CSS styles
+            widget.body.innerHTML = `<div>
+            <button class="clear">C</button>
+                        <button class="operator">/</button>
+                        <button class="operator">*</button>
+                        <button class="operator">-</button>
+            </div>`
 
-            fetch("scripts/table.html")
-                .then((tfile) => tfile.text()).
-                then((html) => { widget.body.innerHTML = html })
+
+
+
         }
 
     };

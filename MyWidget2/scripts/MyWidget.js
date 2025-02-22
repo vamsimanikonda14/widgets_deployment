@@ -58,9 +58,6 @@ define("DS/MyWidget2/scripts/MyWidget", [], function () {
                         <button class="number">8</button>
                         <button class="number">9</button>
                         <button class="operator">+</button>
-                        <button class="number">4</button>
-                        <button class="number">5</button>
-                        <button class="number">6</button>
                         <button class="operator">%</button>
                         <button class="number">1</button>
                         <button class="number">2</button>

@@ -1,4 +1,4 @@
-define("DS/MyWidget2/scripts/MyWidget", [], function () {
+define("DS/CA_PartsViewWidget/scripts/MyWidget", [], function () {
     'use strict';
 
     var myWidget = {
